@@ -3,6 +3,11 @@
 import Image from "next/image";
 import { useState } from "react";
 
+export const metadata = {
+  title: "Referenciák – Fuják Trans",
+  description: "Költöztetés és fuvarozás referenciák",
+};
+
 const images = Array.from(
   { length: 50 },
   (_, i) => i + 1

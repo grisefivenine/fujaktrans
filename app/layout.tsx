@@ -4,9 +4,22 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
 
-export const metadata: Metadata = {
-  title: "Fuják Trans",
-  description: "Költöztetés és fuvarozás",
+export const metadata = {
+  title: "Fuják Trans – Költöztetés és fuvarozás Magyarországon",
+  description:
+    "Költöztetés, fuvarozás, bútorszállítás gyorsan és megbízhatóan. Országos szolgáltatás.",
+  keywords: [
+    "költöztetés",
+    "fuvarozás",
+    "bútorszállítás",
+    "költöztető cég",
+    "szállítás Magyarország"
+  ],
+  openGraph: {
+    title: "Fuják Trans",
+    description: "Költöztetés és fuvarozás profi szinten",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
