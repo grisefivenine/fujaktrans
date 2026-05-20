@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+:root {
+  --background: #050505;
+  --foreground: #EAEAEA;
+
+  --primary: #f54d05;
+  --secondary: #4A0404;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ambient background */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at 15% 25%,
+      rgba(245,77,5,.08),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(245,77,5,.05),
+      transparent 30%
+    );
+
+  pointer-events: none;
+  z-index: -2;
+}
+
+/* film grain */
+
+body::after {
+  content: "";
+
+  position: fixed;
+  inset: 0;
+
+  opacity: .015;
+
+  background-image:
+    url("https://grainy-gradients.vercel.app/noise.svg");
+
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* selection */
+
+::selection {
+  background: rgba(245,77,5,.9);
+  color: black;
+}
+
+/* scrollbar */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    to bottom,
+    var(--primary),
+    var(--secondary)
+  );
+
+  border-radius: 999px;
+}
+
+/* utility classok */
+
+.glass{
+  background:rgba(255,255,255,.04);
+  backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,.05);
+}
+
+.orange-glow{
+  box-shadow:
+    0 0 30px rgba(245,77,5,.2),
+    0 0 70px rgba(245,77,5,.08);
+}
