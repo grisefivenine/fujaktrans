@@ -26,7 +26,7 @@ export default function CookieBanner() {
   if (!visible) return null;
 
   return (
-    <div className="fixed bottom-6 left-6 right-6 z-50 rounded-3xl border border-white/10 bg-black/90 p-6 backdrop-blur-xl">
+    <div className="fixed bottom-24 md:bottom-6 left-6 right-6 z-50 rounded-3xl border border-white/10 bg-black/90 p-6 backdrop-blur-xl">
       <h3 className="text-lg font-bold mb-2">
         Cookie beállítások
       </h3>
