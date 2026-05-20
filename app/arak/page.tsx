@@ -3,11 +3,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-export const metadata = {
-  title: "Árak – Fuják Trans",
-  description: "Költöztetés és fuvarozás árak",
-};
-
 const Toggle = ({
   checked,
   onChange,

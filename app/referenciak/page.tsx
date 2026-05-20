@@ -3,11 +3,6 @@
 import Image from "next/image";
 import { useState } from "react";
 
-export const metadata = {
-  title: "Referenciák – Fuják Trans",
-  description: "Költöztetés és fuvarozás referenciák",
-};
-
 const images = Array.from(
   { length: 50 },
   (_, i) => i + 1
@@ -56,15 +51,16 @@ cursor-pointer
 >
 
 <Image
-src={`/images/gallery-${image}.webp`}
-alt=""
-fill
-className="
-object-cover
-transition
-duration-700
-group-hover:scale-110
-"
+  src={`/images/gallery-${image}.webp`}
+  alt=""
+  fill
+  sizes="(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw"
+  className="
+    object-cover
+    transition
+    duration-700
+    group-hover:scale-110
+  "
 />
 
 </div>
@@ -96,10 +92,11 @@ h-[90vh]
 ">
 
 <Image
-src={`/images/gallery-${selected}.webp`}
-alt=""
-fill
-className="object-contain"
+  src={`/images/gallery-${selected}.webp`}
+  alt=""
+  fill
+  sizes="100vw"
+  className="object-contain"
 />
 
 </div>
