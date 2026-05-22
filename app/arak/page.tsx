@@ -16,17 +16,17 @@ const Toggle = ({
     <button
       type="button"
       onClick={() => onChange(!checked)}
-      className="flex items-center justify-between w-full rounded-xl border border-white/10 bg-black/30 px-4 py-3"
+      className="flex items-center justify-between w-full rounded-xl border border-black/10 bg-gray-300/30 px-4 py-3"
     >
-      <span className="text-gray-300">{label}</span>
+      <span className="text-black">{label}</span>
 
       <div
         className={`h-5 w-10 rounded-full transition ${
-          checked ? "bg-[#f54d05]" : "bg-white/10"
+          checked ? "bg-[#f54d05]" : "bg-gray-300/10"
         }`}
       >
         <div
-          className={`h-4 w-4 bg-white rounded-full mt-[2px] transition ${
+          className={`h-4 w-4 bg-gray-300 rounded-full mt-[2px] transition ${
             checked ? "ml-5" : "ml-1"
           }`}
         />
@@ -121,7 +121,7 @@ if (service !== "teherauto") {
 const total = base + floorExtra;
 
   return (
-    <main className="min-h-screen bg-black text-white px-6 py-32">
+    <main className="min-h-screen bg-gray-300 text-black px-6 py-32">
 
       <div className="mx-auto max-w-5xl text-center mb-16">
         <p className="text-sm tracking-[0.3em] text-[#E0E0E0] uppercase">
@@ -132,7 +132,7 @@ const total = base + floorExtra;
           Áraink
         </h1>
 
-        <p className="mt-6 text-gray-400">
+        <p className="mt-6 text-gray-600">
           Egyszerű, átlátható díjszabás költöztetéshez és szállításhoz.
         </p>
       </div>
@@ -144,13 +144,13 @@ const total = base + floorExtra;
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="rounded-3xl border border-white/5 bg-white/5 p-8 backdrop-blur-xl hover:border-[#f54d05]/30 transition"
+            className="rounded-3xl border border-black/5 bg-gray-300/5 p-8 backdrop-blur-xl hover:border-[#f54d05]/30 transition"
           >
             <h2 className="text-xl font-bold text-[#f54d05]">
               {item.title}
             </h2>
 
-            <p className="mt-2 text-gray-400">
+            <p className="mt-2 text-gray-600">
               {item.note}
             </p>
 
@@ -162,12 +162,12 @@ const total = base + floorExtra;
       </div>
 
       {/* Példa rész */}
-      <div className="mt-20 rounded-3xl border border-white/10 bg-black/40 p-10">
+      <div className="mt-20 rounded-3xl border border-black/10 bg-gray-300/40 p-10">
         <h3 className="text-2xl font-bold mb-6 text-[#f54d05]">
           Példa számítás
         </h3>
 
-        <p className="text-gray-300 leading-relaxed">
+        <p className="text-black leading-relaxed">
           Nyíregyháza – Kisvárda 2 szobás lakás költöztetése a 3. emeletről:
           <br /><br />
 
@@ -175,29 +175,29 @@ const total = base + floorExtra;
           3 óra munka × 15.000 Ft = <b>45.000 Ft</b><br />
           100 km × 280 Ft = <b>28.000 Ft</b><br /><br />
 
-          <span className="text-white font-bold">
+          <span className="text-black font-bold">
             Teljes költség: 83.000 Ft
           </span>
         </p>
       </div>
 
       {/* CALCULATOR */}
-<section className="py-24 bg-[#050505] mt-20">
+<section className="py-24 bg-[#E0E0E0] mt-20">
   <div className="mx-auto max-w-4xl px-6">
 
     <h2 className="text-4xl font-bold text-center mb-10">
       Ár kalkulátor
     </h2>
 
-    <div className="rounded-3xl border border-white/10 bg-black/40 p-8 space-y-6">
+    <div className="rounded-3xl border border-black/10 bg-gray-300/40 p-8 space-y-6">
 
       {/* service */}
       <div>
-        <p className="text-gray-400 mb-2">Szolgáltatás</p>
+        <p className="text-gray-600 mb-2">Szolgáltatás</p>
         <select
           value={service}
           onChange={(e) => setService(e.target.value)}
-          className="w-full p-4 rounded-xl bg-black border border-white/10"
+          className="w-full p-4 rounded-xl bg-gray-300 border border-black/10"
         >
           <option value="1fő">Költöztetés 1 fővel</option>
           <option value="2fő">Költöztetés 2 fővel</option>
@@ -209,26 +209,26 @@ const total = base + floorExtra;
 
       {/* hours */}
       <div>
-        <p className="text-gray-400 mb-2">Órák száma</p>
+        <p className="text-gray-600 mb-2">Órák száma</p>
         <input
           type="number"
           min={1}
           value={hours}
           onChange={(e) => setHours(Number(e.target.value))}
-          className="w-full p-4 rounded-xl bg-black border border-white/10"
+          className="w-full p-4 rounded-xl bg-gray-300 border border-black/10"
         />
       </div>
 
       {/* km */}
       {service !== "teherauto" && (
         <div>
-          <p className="text-gray-400 mb-2">Kilométer</p>
+          <p className="text-gray-600 mb-2">Kilométer</p>
           <input
             type="number"
             min={0}
             value={km}
             onChange={(e) => setKm(Number(e.target.value))}
-            className="w-full p-4 rounded-xl bg-black border border-white/10"
+            className="w-full p-4 rounded-xl bg-gray-300 border border-black/10"
           />
         </div>
       )}
@@ -238,14 +238,14 @@ const total = base + floorExtra;
   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
     {/* FROM */}
-    <div className="space-y-3 rounded-2xl border border-white/10 bg-black/30 p-4">
-      <p className="text-gray-400">Honnan emelet</p>
+    <div className="space-y-3 rounded-2xl border border-black/10 bg-gray-300/30 p-4">
+      <p className="text-gray-600">Honnan emelet</p>
 
       <input
         type="number"
         value={fromFloor}
         onChange={(e) => setFromFloor(Number(e.target.value))}
-        className="w-full p-3 rounded-xl bg-black border border-white/10"
+        className="w-full p-3 rounded-xl bg-gray-300 border border-black/10"
         placeholder="Emelet"
       />
 
@@ -257,14 +257,14 @@ const total = base + floorExtra;
     </div>
 
     {/* TO */}
-    <div className="space-y-3 rounded-2xl border border-white/10 bg-black/30 p-4">
-      <p className="text-gray-400">Hova emelet</p>
+    <div className="space-y-3 rounded-2xl border border-black/10 bg-gray-300/30 p-4">
+      <p className="text-gray-600">Hova emelet</p>
 
       <input
         type="number"
         value={toFloor}
         onChange={(e) => setToFloor(Number(e.target.value))}
-        className="w-full p-3 rounded-xl bg-black border border-white/10"
+        className="w-full p-3 rounded-xl bg-gray-300 border border-black/10"
         placeholder="Emelet"
       />
 
@@ -279,8 +279,8 @@ const total = base + floorExtra;
 )}
 
       {/* result */}
-      <div className="pt-6 border-t border-white/10">
-  <p className="text-gray-400 mb-2">Becsült ár</p>
+      <div className="pt-6 border-t border-black/10">
+  <p className="text-gray-600 mb-2">Becsült ár</p>
 
   <div className="relative overflow-hidden rounded-2xl border border-[#f54d05]/20 bg-gradient-to-r from-black to-[#1a0a05] p-6">
     
@@ -290,7 +290,7 @@ const total = base + floorExtra;
       {total.toLocaleString()} Ft
     </p>
 
-    <p className="relative text-sm text-gray-400 mt-2">
+    <p className="relative text-sm text-gray-600 mt-2">
       Ez egy becsült összeg, pontos ár telefonon egyeztetve
     </p>
 

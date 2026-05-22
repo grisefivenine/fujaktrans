@@ -1,11 +1,11 @@
 export default function Adatkezeles() {
   return (
-    <div className="mx-auto max-w-4xl px-6 py-32 text-white">
+    <div className="mx-auto max-w-4xl px-6 py-32 text-black">
       <h1 className="mb-10 text-4xl font-bold">
         Adatkezelési tájékoztató
       </h1>
 
-      <div className="space-y-8 text-white/80">
+      <div className="space-y-8 text-black/80">
 
         <section>
           <h2 className="mb-3 text-2xl font-semibold">

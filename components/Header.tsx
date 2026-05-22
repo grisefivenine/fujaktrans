@@ -8,7 +8,7 @@ export default function Header() {
   const [language, setLanguage] = useState<"hu" | "en">("hu");
 
   return (
-    <header className="fixed left-0 top-0 z-50 w-full border-b border-white/5 bg-black/30 backdrop-blur-2xl">
+    <header className="relative fixed left-0 top-0 z-50 w-full border-b border-black/5 bg-gray-300 backdrop-blur-5xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
 
         <Link
@@ -22,35 +22,35 @@ export default function Header() {
 
           <Link
   href="/#services"
-  className="transition hover:text-[#f54d05]"
+  className="text-black transition hover:text-[#f54d05]"
 >
   Szolgáltatások
 </Link>
 
           <Link
             href="/arak"
-            className="transition hover:text-[#f54d05]"
+            className="text-black transition hover:text-[#f54d05]"
           >
             Áraink
           </Link>
 
           <Link
   href="/#reviews"
-  className="transition hover:text-[#f54d05]"
+  className="text-black transition hover:text-[#f54d05]"
 >
   Vélemények
 </Link>
 
           <Link
             href="/referenciak"
-            className="transition hover:text-[#f54d05]"
+            className="text-black transition hover:text-[#f54d05]"
           >
             Referenciák
           </Link>
 
           <Link
   href="/#contact"
-  className="transition hover:text-[#f54d05]"
+  className="text-black transition hover:text-[#f54d05]"
 >
   Kapcsolat
 </Link>
@@ -66,7 +66,7 @@ export default function Header() {
                 prev === "hu" ? "en" : "hu"
               )
             }
-            className="rounded-full border border-white/10 px-3 py-2 text-sm transition hover:border-[#f54d05]"
+            className="rounded-full border border-black px-3 py-2 text-black text-sm transition hover:border-[#f54d05]"
           >
             {language.toUpperCase()}
           </button>
@@ -87,7 +87,7 @@ export default function Header() {
           >
 
             <span
-              className={`absolute h-0.5 w-6 bg-white transition-all duration-300 ${
+              className={`absolute h-0.5 w-6 bg-black transition-all duration-300 ${
                 menuOpen
                   ? "rotate-45"
                   : "-translate-y-2"
@@ -95,7 +95,7 @@ export default function Header() {
             />
 
             <span
-              className={`absolute h-0.5 w-6 bg-white transition-all duration-300 ${
+              className={`absolute h-0.5 w-6 bg-black transition-all duration-300 ${
                 menuOpen
                   ? "opacity-0"
                   : "opacity-100"
@@ -103,7 +103,7 @@ export default function Header() {
             />
 
             <span
-              className={`absolute h-0.5 w-6 bg-white transition-all duration-300 ${
+              className={`absolute h-0.5 w-6 bg-black transition-all duration-300 ${
                 menuOpen
                   ? "-rotate-45"
                   : "translate-y-2"
@@ -117,9 +117,9 @@ export default function Header() {
       </div>
 
       {menuOpen && (
-        <div className="border-t border-white/10 bg-black/95 px-6 py-6 md:hidden">
+        <div className="border-t border-black/10 bg-gray-300/95 px-6 py-6 md:hidden">
 
-          <nav className="flex flex-col gap-6 text-lg">
+          <nav className="flex flex-col gap-6 text-black text-lg">
 
             <Link
   href="/#services"
@@ -160,6 +160,7 @@ export default function Header() {
 
         </div>
       )}
+      
     </header>
   );
 }

@@ -14,7 +14,7 @@ const [selected,setSelected]=useState<number|null>(null);
 
 return(
 
-<div className="min-h-screen bg-black text-white p-6">
+<div className="min-h-screen bg-gray-300 text-black p-6">
 
 <div className="mx-auto max-w-7xl">
 
@@ -22,7 +22,7 @@ return(
 Referenciák
 </h1>
 
-<p className="mb-16 text-gray-400">
+<p className="mb-16 text-gray-600">
 Munkáink teljes galériája
 </p>
 
@@ -78,7 +78,7 @@ className="
 fixed
 inset-0
 z-[999]
-bg-black/95
+bg-gray-300/95
 flex
 items-center
 justify-center

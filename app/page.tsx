@@ -89,6 +89,16 @@ export default function FujakTransWebsite() {
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
   const [website, setWebsite] = useState("");
   const [formStart] = useState(Date.now());
+  const [address, setAddress] = useState("");
+
+  const [fromLocation, setFromLocation] = useState("");
+  const [toLocation, setToLocation] = useState("");
+
+  const [fromFloor, setFromFloor] = useState("Kertes ház");
+  const [toFloor, setToFloor] = useState("Kertes ház");
+
+  const [rooms, setRooms] = useState("1");
+  const [loaders, setLoaders] = useState("1");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
@@ -103,10 +113,16 @@ export default function FujakTransWebsite() {
       },
       body: JSON.stringify({
   name,
-  email,
-  phone,
-  message,
-  website,
+email,
+phone,
+address,
+fromLocation,
+toLocation,
+fromFloor,
+toFloor,
+rooms,
+loaders,
+message,
   elapsedTime: Date.now() - formStart,
 }),
     });
@@ -216,13 +232,13 @@ const startDrag = (e: React.MouseEvent) => {
 
   if (isloading) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-black">
+      <div className="flex min-h-screen items-center justify-center bg-gray-300">
         <div className="space-y-6 text-center">
           <div className="mx-auto h-16 w-16 animate-spin rounded-full border-4 border-[#f54d05] border-t-transparent" />
 
           <div className="space-y-3">
-            <div className="h-4 w-48 animate-pulse rounded-full bg-white/10 mx-auto" />
-            <div className="h-4 w-32 animate-pulse rounded-full bg-white/5 mx-auto" />
+            <div className="h-4 w-48 animate-pulse rounded-full bg-gray-300/10 mx-auto" />
+            <div className="h-4 w-32 animate-pulse rounded-full bg-gray-300/5 mx-auto" />
           </div>
         </div>
       </div>
@@ -230,7 +246,7 @@ const startDrag = (e: React.MouseEvent) => {
   }
 
   return (
-  <div className="min-h-screen bg-black text-white overflow-x-hidden transition-all duration-700">
+  <div className="min-h-screen bg-gray-300 text-black overflow-x-hidden transition-all duration-700">
     <div
   className={`transition-all duration-1000 ${
     ready ? "opacity-100" : "opacity-0 scale-[1.02]"
@@ -277,7 +293,7 @@ const startDrag = (e: React.MouseEvent) => {
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="absolute left-[30%] top-[-300px] h-[1500px] w-[220px] rotate-[-12deg] bg-gradient-to-b from-[#E0E0E0]/15 to-transparent blur-3xl"
+          className="absolute left-[30%] top-[-300px] h-[1500px] w-[220px] rotate-[-12deg] bg-gradient-to-b from-[#000000]/15 to-transparent blur-3xl"
         />
 
         {/* Particles */}
@@ -317,7 +333,7 @@ const startDrag = (e: React.MouseEvent) => {
 
       <main id="top">
         {/* FLOATING MAP */}
-        <div className="fixed bottom-24 right-6 z-40 hidden overflow-hidden rounded-2xl border border-white/10 bg-black/50 p-2 backdrop-blur-xl lg:block">
+        <div className="fixed bottom-24 right-6 z-40 hidden overflow-hidden rounded-2xl border border-black/10 bg-gray-300/50 p-2 backdrop-blur-xl lg:block">
           <iframe
             title="Google Maps"
             src="https://www.google.com/maps?q=Nyíregyháza&output=embed"
@@ -345,7 +361,7 @@ const startDrag = (e: React.MouseEvent) => {
             <source src="/videos/hero-video.mp4" type="video/mp4" />
           </video>
 
-          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/70 to-[#050505]" />
+          <div className="absolute inset-0 from-gray-300 to-gray-100/20 via-black/70 to-[#E0E0E0]" />
 
           <motion.div
   initial={{ opacity: 0, y: 40 }}
@@ -353,11 +369,11 @@ const startDrag = (e: React.MouseEvent) => {
   transition={{ duration: 1 }}
   className="relative z-20 w-full max-w-5xl px-5 sm:px-6 pt-32 text-center"
 >
-  <p className="mb-6 px-2 text-[10px] leading-relaxed uppercase tracking-[0.2em] text-[#E0E0E0] sm:text-sm sm:tracking-[0.35em] break-words">
+  <p className="mb-6 px-2 text-[10px] leading-relaxed uppercase tracking-[0.2em] text-[#000000] sm:text-sm sm:tracking-[0.35em] break-words">
     Költöztetés / Fuvarozás / Lomtalanítás Magyarország egész területén
   </p>
 
-  <h1 className="mb-6 text-4xl font-bold leading-[1.1] sm:text-5xl md:text-7xl text-[#E0E0E0]">
+  <h1 className="mb-6 text-4xl font-bold leading-[1.1] sm:text-5xl md:text-7xl text-[#000000]">
     Az Ön bútorai.
     <br />
     <span className="text-[#f54d05]">
@@ -365,7 +381,7 @@ const startDrag = (e: React.MouseEvent) => {
     </span>
   </h1>
 
-  <p className="mx-auto mb-10 max-w-[90%] text-sm leading-7 text-gray-300 sm:max-w-3xl sm:text-lg md:text-xl">
+  <p className="mx-auto mb-10 max-w-[90%] text-sm leading-7 text-[#000000] sm:max-w-3xl sm:text-lg md:text-xl">
     Gyors, biztonságos és stresszmentes költöztetés, fuvarozás és
     lomtalanítás modern megoldásokkal és tapasztalt csapattal.
   </p>
@@ -403,18 +419,18 @@ const startDrag = (e: React.MouseEvent) => {
         </section>
 
         {/* STATS */}
-<section className="bg-[#0b0b0b] py-16 md:py-28">
+<section className="bg-[#E0E0E0] py-16 md:py-28">
   <div className="mx-auto grid max-w-7xl grid-cols-2 gap-4 px-4 text-center md:grid-cols-4 md:gap-8 md:px-6">
     {stats.map(([number, label]) => (
       <div
         key={label}
-        className="rounded-2xl md:rounded-3xl border border-white/5 bg-black/40 p-5 sm:p-6 md:p-10 backdrop-blur-xl"
+        className="rounded-2xl md:rounded-3xl border border-black/5 bg-gray-300/40 p-5 sm:p-6 md:p-10 backdrop-blur-xl"
       >
         <h2 className="mb-2 md:mb-3 text-2xl sm:text-3xl md:text-5xl font-bold text-[#f54d05] leading-none">
           {number}
         </h2>
 
-        <p className="text-xs sm:text-sm md:text-base text-gray-400 leading-snug">
+        <p className="text-xs sm:text-sm md:text-base text-[#000000] leading-snug">
           {label}
         </p>
       </div>
@@ -423,10 +439,10 @@ const startDrag = (e: React.MouseEvent) => {
 </section>
 
         {/* SERVICES */}
-        <section id="services" className="bg-[#050505] py-32">
+        <section id="services" className="bg-[#E0E0E0] py-32">
           <div className="mx-auto max-w-7xl px-6">
             <div className="mb-16 text-center">
-              <p className="mb-4 text-sm uppercase tracking-[0.3em] text-[#E0E0E0]">
+              <p className="mb-4 text-sm uppercase tracking-[0.3em] text-[#000000]">
                 Szolgáltatások
               </p>
 
@@ -434,7 +450,7 @@ const startDrag = (e: React.MouseEvent) => {
                 Teljes körű költöztetési megoldások
               </h2>
 
-              <p className="mx-auto max-w-3xl text-lg text-gray-400">
+              <p className="mx-auto max-w-3xl text-lg text-[#000000]">
                 Lakásoktól kezdve irodákon át a speciális szállításig.
               </p>
             </div>
@@ -447,7 +463,7 @@ const startDrag = (e: React.MouseEvent) => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
                   viewport={{ once: true }}
-                  className="group rounded-3xl border border-white/5 bg-zinc-950/50 p-8 backdrop-blur-xl transition duration-300 hover:-translate-y-2 hover:border-[#f54d05]/20"
+                  className="group rounded-3xl border border-black/5 bg-zinc-950/50 p-8 backdrop-blur-xl transition duration-300 hover:-translate-y-2 hover:border-[#f54d05]/20"
                 >
                   <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#f54d05]/10">
                     <div className="h-8 w-8 rounded-full bg-[#f54d05]" />
@@ -457,13 +473,13 @@ const startDrag = (e: React.MouseEvent) => {
   {service.title}
 </h3>
 
-                  <p className="mb-6 leading-relaxed text-gray-400">
+                  <p className="mb-6 leading-relaxed text-[#000000]">
   {service.description}
 </p>
 
                   <Link
   href="/arak"
-  className="flex items-center gap-2 font-semibold text-[#E0E0E0] hover:text-[#f54d05] transition"
+  className="flex items-center gap-2 font-semibold text-[#000000] hover:text-[#f54d05] transition"
 >
   Részletek →
 </Link>
@@ -474,10 +490,10 @@ const startDrag = (e: React.MouseEvent) => {
         </section>
 
         {/* REVIEWS */}
-        <section id="reviews" className="bg-[#0b0b0b] py-32">
+        <section id="reviews" className="bg-[#E0E0E0] py-32">
           <div className="mx-auto max-w-7xl px-6">
             <div className="mb-20 text-center">
-              <p className="mb-4 text-sm uppercase tracking-[0.3em] text-[#E0E0E0]">
+              <p className="mb-4 text-sm uppercase tracking-[0.3em] text-[#000000]">
                 Google értékelések
               </p>
 
@@ -490,7 +506,7 @@ const startDrag = (e: React.MouseEvent) => {
               {reviews.map((review) => (
                 <article
                   key={review.name}
-                  className="rounded-3xl border border-white/5 bg-black/40 p-8 backdrop-blur-xl"
+                  className="rounded-3xl border border-black/5 bg-gray-300/40 p-8 backdrop-blur-xl"
                 >
                   <div className="mb-6 flex items-center gap-1 text-[#f54d05]">
                     {[...Array(5)].map((_, index) => (
@@ -498,7 +514,7 @@ const startDrag = (e: React.MouseEvent) => {
                     ))}
                   </div>
 
-                  <p className="mb-8 text-lg leading-relaxed text-gray-300">
+                  <p className="mb-8 text-lg leading-relaxed text-black">
                     “{review.text}”
                   </p>
 
@@ -509,7 +525,7 @@ const startDrag = (e: React.MouseEvent) => {
 
                     <div>
                       <p className="font-semibold">{review.name}</p>
-                      <p className="text-sm text-gray-500">Google Review</p>
+                      <p className="text-sm text-gray-700">Google Review</p>
                     </div>
                   </div>
                 </article>
@@ -521,7 +537,7 @@ const startDrag = (e: React.MouseEvent) => {
         {/* GALLERY */}
 <section
   id="gallery"
-  className="relative overflow-hidden bg-[#050505] py-24"
+  className="relative overflow-hidden bg-[#E0E0E0] py-24"
 >
   <div className="absolute left-0 top-0 h-[500px] w-[500px] rounded-full bg-[#f54d05]/5 blur-[150px]" />
 
@@ -530,7 +546,7 @@ const startDrag = (e: React.MouseEvent) => {
     <div className="mb-12 flex items-center justify-between">
 
       <div>
-        <p className="mb-3 text-sm uppercase tracking-[0.3em] text-[#E0E0E0]">
+        <p className="mb-3 text-sm uppercase tracking-[0.3em] text-[#000000]">
           Referenciák
         </p>
 
@@ -544,7 +560,7 @@ const startDrag = (e: React.MouseEvent) => {
         className="
         hidden md:flex
         rounded-full
-        border border-white/10
+        border border-black/10
         px-6 py-3
         transition
         hover:bg-[#f54d05]
@@ -567,7 +583,7 @@ const startDrag = (e: React.MouseEvent) => {
       h-full
       w-24
       bg-gradient-to-r
-      from-[#050505]
+      from-[#E0E0E0]
       to-transparent
       hidden md:block
       " />
@@ -582,7 +598,7 @@ const startDrag = (e: React.MouseEvent) => {
       h-full
       w-24
       bg-gradient-to-l
-      from-[#050505]
+      from-[#E0E0E0]
       to-transparent
       hidden md:block
       " />
@@ -621,7 +637,7 @@ select-none
             overflow-hidden
             rounded-[35px]
             border
-            border-white/5
+            border-black/5
             "
           >
 
@@ -656,7 +672,7 @@ hover:-translate-y-2
         className="
         rounded-full
         border
-        border-white/10
+        border-black/10
         px-6 py-3
         transition
         hover:bg-[#f54d05]
@@ -671,9 +687,9 @@ hover:-translate-y-2
 </section>
 
         {/* CTA */}
-        <section className="bg-[#0b0b0b] py-32">
+        <section className="bg-[#E0E0E0] py-32">
           <div className="mx-auto max-w-5xl px-6 text-center">
-            <div className="rounded-[40px] border border-white/10 bg-gradient-to-br from-[#f54d05] to-[#4A0404] p-14 text-black shadow-2xl">
+            <div className="rounded-[40px] border border-black/10 bg-gradient-to-br from-[#f54d05] to-[#4A0404] p-14 text-black shadow-2xl">
               <p className="mb-4 text-sm uppercase tracking-[0.3em]">
                 Gyors kapcsolatfelvétel
               </p>
@@ -690,14 +706,14 @@ hover:-translate-y-2
               <div className="flex flex-col justify-center gap-4 sm:flex-row">
                 <a
                   href="#contact"
-                  className="rounded-full bg-black px-8 py-4 font-bold text-white transition duration-300 hover:scale-105"
+                  className="rounded-full bg-gray-300 px-8 py-4 font-bold text-black transition duration-300 hover:scale-105"
                 >
                   Árajánlat kérése
                 </a>
 
                 <a
                   href="tel:+36206180015"
-                  className="rounded-full border border-black/20 px-8 py-4 font-bold transition duration-300 hover:bg-black hover:text-white"
+                  className="rounded-full border border-black/20 px-8 py-4 font-bold transition duration-300 hover:bg-gray-300 hover:text-black"
                 >
                   Hívás most
                 </a>
@@ -707,10 +723,10 @@ hover:-translate-y-2
         </section>
 
         {/* CONTACT */}
-        <section id="contact" className="bg-[#050505] py-32">
+        <section id="contact" className="bg-[#E0E0E0] py-32">
           <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 px-6 lg:grid-cols-2">
             <div>
-              <p className="mb-4 text-sm uppercase tracking-[0.3em] text-[#E0E0E0]">
+              <p className="mb-4 text-sm uppercase tracking-[0.3em] text-[#000000]">
                 Kapcsolat
               </p>
 
@@ -718,74 +734,217 @@ hover:-translate-y-2
                 Beszéljünk a szállításról.
               </h2>
 
-              <div className="space-y-6 text-lg text-gray-300">
+              <div className="space-y-6 text-lg text-black">
                 <p>📞 +36 20 618 0015</p>
                 <p>✉️ csabafujak@icloud.com</p>
                 <p>📍 Nyíregyháza, Magyarország</p>
               </div>
             </div>
 
-            <div className="rounded-[40px] border border-white/5 bg-zinc-950/50 p-10 backdrop-blur-xl">
+            <div className="rounded-[40px] border border-black/5 bg-gradient-to-br from-[#f54d05] to-[#4A0404] p-10 backdrop-blur-xl">
               <form
-  onSubmit={handleSubmit}
-  className="space-y-5"
+onSubmit={handleSubmit}
+className="space-y-5"
 >
-                <input
-  type="text"
-  placeholder="Név"
-  value={name}
-  onChange={(e) => setName(e.target.value)}
-                  className="w-full rounded-2xl border border-white/10 bg-black/40 px-5 py-4 outline-none placeholder:text-gray-500"
-                />
 
-                <input
-  type="email"
-  placeholder="Email"
-  value={email}
-  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full rounded-2xl border border-white/10 bg-black/40 px-5 py-4 outline-none placeholder:text-gray-500"
-                />
+{/* Név + Email */}
 
-                <input
-                  type="tel"
-                  placeholder="Telefonszám"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  className="w-full rounded-2xl border border-white/10 bg-black/40 px-5 py-4 outline-none placeholder:text-gray-500"
-                />
+<div className="grid md:grid-cols-2 gap-4">
 
-                <textarea
-                  value={message}
-  onChange={(e) => setMessage(e.target.value)}
-  placeholder="Honnan-hová, hanyadik emelet, van-e lift, rakodó személyek száma stb. Minél több információt ad meg, annál pontosabb ajánlatot tudunk adni."
-  rows={5}
-                  className="w-full rounded-2xl border border-white/10 bg-black/40 px-5 py-4 outline-none placeholder:text-gray-500"
-                />
+<input
+type="text"
+placeholder="Név"
+value={name}
+onChange={(e)=>setName(e.target.value)}
+className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4 outline-none placeholder:text-gray-700"
+/>
 
-                <button
-  type="submit"
-  disabled={loading}
-  className="w-full rounded-xl bg-[#f54d05] py-4 font-bold text-black transition hover:scale-[1.02] disabled:opacity-50"
+<input
+type="email"
+placeholder="Email"
+value={email}
+onChange={(e)=>setEmail(e.target.value)}
+className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4 outline-none placeholder:text-gray-700"
+/>
+
+</div>
+
+
+{/* Telefon + cím */}
+
+<div className="grid md:grid-cols-2 gap-4">
+
+<input
+type="tel"
+placeholder="Telefonszám"
+value={phone}
+onChange={(e)=>setPhone(e.target.value)}
+className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4 outline-none placeholder:text-gray-700"
+/>
+
+<input
+type="text"
+placeholder="Pontos cím"
+value={address}
+onChange={(e)=>setAddress(e.target.value)}
+className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4 outline-none placeholder:text-gray-700"
+/>
+
+</div>
+
+
+{/* Honnan-hova */}
+
+<div className="grid md:grid-cols-2 gap-4">
+
+<input
+type="text"
+placeholder="Honnan"
+value={fromLocation}
+onChange={(e)=>setFromLocation(e.target.value)}
+className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4 outline-none placeholder:text-gray-700"
+/>
+
+<input
+type="text"
+placeholder="Hova"
+value={toLocation}
+onChange={(e)=>setToLocation(e.target.value)}
+className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4 outline-none placeholder:text-gray-700"
+/>
+
+</div>
+
+
+{/* Emeletek */}
+
+<div className="grid md:grid-cols-2 gap-4">
+
+<select
+value={fromFloor}
+onChange={(e)=>setFromFloor(e.target.value)}
+className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4"
 >
-  {loading ? (
-    <span className="flex items-center justify-center gap-2">
-      <span className="h-4 w-4 animate-spin rounded-full border-2 border-black border-t-transparent" />
-      Küldés...
-    </span>
-  ) : (
-    "Ajánlatkérés küldése"
-  )}
-</button>
-{status === "success" && (
-  <p className="text-green-400 mt-4">
-    Üzenet sikeresen elküldve!
-  </p>
+
+<option>Kertes ház</option>
+<option>Földszint</option>
+<option>1. emelet</option>
+<option>2. emelet</option>
+<option>3. emelet</option>
+<option>4. emelet</option>
+<option>5. emelet</option>
+<option>6. emelet</option>
+<option>7. emelet</option>
+<option>8. emelet</option>
+<option>9. emelet</option>
+<option>10. emelet</option>
+<option>10+ emelet</option>
+
+</select>
+
+<select
+value={toFloor}
+onChange={(e)=>setToFloor(e.target.value)}
+className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4"
+>
+
+<option>Kertes ház</option>
+<option>Földszint</option>
+<option>1. emelet</option>
+<option>2. emelet</option>
+<option>3. emelet</option>
+<option>4. emelet</option>
+<option>5. emelet</option>
+<option>6. emelet</option>
+<option>7. emelet</option>
+<option>8. emelet</option>
+<option>9. emelet</option>
+<option>10. emelet</option>
+<option>10+ emelet</option>
+
+</select>
+
+</div>
+
+
+{/* Szoba + rakodó */}
+
+<div className="grid md:grid-cols-2 gap-4">
+
+<select
+value={rooms}
+onChange={(e)=>setRooms(e.target.value)}
+className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4"
+>
+
+<option>1 szoba</option>
+<option>2 szoba</option>
+<option>3 szoba</option>
+<option>4+ szoba</option>
+
+</select>
+
+<select
+value={loaders}
+onChange={(e)=>setLoaders(e.target.value)}
+className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4"
+>
+
+<option>1 rakodó</option>
+<option>2 rakodó</option>
+<option>3 rakodó</option>
+<option>4 rakodó</option>
+
+</select>
+
+</div>
+
+
+{/* Megjegyzés */}
+
+<textarea
+value={message}
+onChange={(e)=>setMessage(e.target.value)}
+placeholder="Egyéb megjegyzés (lift, különleges bútor, időpont, stb.)"
+rows={5}
+className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4 outline-none placeholder:text-gray-700"
+/>
+
+
+<button
+type="submit"
+disabled={loading}
+className="w-full rounded-xl bg-gray-300 py-4 font-bold text-black transition hover:scale-[1.02] disabled:opacity-50"
+>
+
+{loading ? (
+
+<span className="flex items-center justify-center gap-2">
+
+<span className="h-4 w-4 animate-spin rounded-full border-2 border-black border-t-transparent"/>
+
+Küldés...
+
+</span>
+
+) : (
+
+"Ajánlatkérés küldése"
+
 )}
 
-{status === "error" && (
-  <p className="text-red-400 mt-4">
-    Hiba történt, próbáld újra!
-  </p>
+</button>
+
+{status==="success" && (
+<p className="text-green-500">
+Üzenet sikeresen elküldve!
+</p>
+)}
+
+{status==="error" && (
+<p className="text-red-500">
+Hiba történt, próbáld újra!
+</p>
 )}
 
 <div className="hidden">
@@ -804,17 +963,17 @@ hover:-translate-y-2
         </section>
 
       
-      <div className="fixed bottom-0 left-0 z-[120] flex w-full gap-3 border-t border-white/10 bg-black/80 p-4 backdrop-blur-2xl md:hidden">
+      <div className="fixed bottom-0 left-0 z-[120] flex w-full gap-3 border-t border-black/10 bg-gray-300/80 p-4 backdrop-blur-2xl md:hidden">
   <a
     href="tel:+36206180015"
-    className="flex-1 rounded-2xl bg-[#f54d05] px-4 py-4 text-center font-bold text-black"
+    className="flex-1 rounded-2xl bg-gradient-to-br from-[#f54d05] to-[#4A0404] px-4 py-4 text-center font-bold text-black"
   >
     📞 Hívás
   </a>
 
   <a
     href="#contact"
-    className="flex-1 rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-center font-bold text-white"
+    className="flex-1 rounded-2xl border border-black/10 bg-gray-300/5 px-4 py-4 text-center font-bold text-black"
   >
     Árajánlat
   </a>

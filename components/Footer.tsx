@@ -2,8 +2,8 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/5 bg-black py-10">
-      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-6 text-sm text-gray-500 md:flex-row">
+    <footer className="border-t border-black/5 bg-gray-300 py-10">
+      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-6 text-sm text-gray-700 md:flex-row">
 
         <p>© 2026 Fuják Trans. Minden jog fenntartva.</p>
 
