@@ -26,6 +26,23 @@ Referenciák
 Munkáink teljes galériája
 </p>
 
+<div className="rounded-[30px] overflow-hidden border border-black/10">
+
+<video
+controls
+preload="metadata"
+poster="/images/gallery-3.webp"
+className="w-full"
+>
+
+<source
+src="/videos/hero-video.mp4"
+type="video/mp4"
+/>
+
+</video>
+
+</div>
 
 <div className="
 grid

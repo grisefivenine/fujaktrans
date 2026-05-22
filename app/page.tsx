@@ -78,7 +78,6 @@ export default function FujakTransWebsite() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [ready, setReady] = useState(false);
   const [isReady, setIsReady] = useState(false);
-  const [videoReady, setVideoReady] = useState(false);
   const isloading = !isReady;
   const sliderRef = useRef<HTMLDivElement>(null);
   const [name, setName] = useState("");
@@ -345,21 +344,7 @@ const startDrag = (e: React.MouseEvent) => {
 
         {/* HERO */}
         <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            onCanPlayThrough={() => setVideoReady(true)}
-            className={`absolute inset-0 h-full w-full object-cover transition-all duration-1000 ${
-              videoReady
-      ? "opacity-40 sm:opacity-60 blur-0 scale-100"
-      : "opacity-0 blur-2xl scale-105"
-  }`}
-          >
-            <source src="/videos/hero-video.mp4" type="video/mp4" />
-          </video>
+          
 
           <div className="absolute inset-0 from-gray-300 to-gray-100/20 via-black/70 to-[#E0E0E0]" />
 
