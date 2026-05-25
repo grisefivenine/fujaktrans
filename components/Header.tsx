@@ -5,7 +5,6 @@ import { useState } from "react";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [language, setLanguage] = useState<"hu" | "en">("hu");
 
   return (
     <header className="relative fixed left-0 top-0 z-50 w-full border-b border-black/5 bg-gray-300 backdrop-blur-5xl">
@@ -35,6 +34,13 @@ export default function Header() {
           </Link>
 
           <Link
+            href="/informaciok"
+            className="text-black transition hover:text-[#f54d05]"
+          >
+            Információk
+          </Link>
+
+          <Link
   href="/#reviews"
   className="text-black transition hover:text-[#f54d05]"
 >
@@ -59,17 +65,7 @@ export default function Header() {
 
         <div className="flex items-center gap-4">
 
-          <button
-            type="button"
-            onClick={() =>
-              setLanguage(prev =>
-                prev === "hu" ? "en" : "hu"
-              )
-            }
-            className="rounded-full border border-black px-3 py-2 text-black text-sm transition hover:border-[#f54d05]"
-          >
-            {language.toUpperCase()}
-          </button>
+          
 
           <Link
   href="/#contact"
@@ -133,6 +129,13 @@ export default function Header() {
               onClick={() => setMenuOpen(false)}
             >
               Áraink
+            </Link>
+
+            <Link
+              href="/informaciok"
+              onClick={() => setMenuOpen(false)}
+            >
+              Információk
             </Link>
 
             <Link

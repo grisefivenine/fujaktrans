@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRef } from "react";
+import DatePicker from "../components/DatePicker";
 
 const stats = [
   ["500+", "Sikeres költözés"],
@@ -58,24 +59,45 @@ const services = [
 
 const reviews = [
   {
-    name: "Péter",
-    text: "Gyors és profi csapat, maximálisan elégedettek voltunk.",
+    name: "Sztanyi Agnes",
+    text: "Teljes mértékben elégedett voltam a fiúkkal. A 4. emeletről kellett átköltöznünk egy családi házba, és minden pontosan a megbeszéltek szerint zajlott. Időben érkeztek, precízen dolgoztak, és az egész költözés sérülésmentesen, gördülékenyen ment végbe. " +
+      "Biztos vagyok benne, hogy bátran ajánlani fogom őket másoknak is, valóban le a kalappal a munkájuk előtt!",
   },
   {
-    name: "Andrea",
-    text: "Nagyon vigyáztak minden bútorra, csak ajánlani tudom.",
+    name: "Kiss Bálint",
+    text: "Gondoltam, hogy jó erőben vannak a srácok, de amit mi a párommal két hétig hordanánk Ők két óra alatt levitték. Mindezt közel 10 óra vezetés után. Gyors és korrekt csapat, mindenkinek csak ajánlani tudom!",
   },
   {
-    name: "Gábor",
-    text: "Pontos érkezés és korrekt árak. Ritka megbízható szolgáltatás.",
+    name: "Beatrix Zákány",
+    text: "A szállítás során a bútorokra kiemelt figyelmet fordítottak, és azok gondosan becsomagolt, védett állapotban kerültek elszállításra. Sérülés vagy hiány nem merült fel. A teljes folyamat precízen és körültekintően történt. Összességében a költöztetés problémamentes volt, és minden az előzetesen egyeztetettek szerint valósult meg. Teljes mértékben elégedettek voltunk velük, és mindenkinek ajánlani tudom!😊",
+  },
+  {
+    name: "Péter Makara",
+    text: "Nagyon elégedett vagyok a költöztető cég munkájával! Profi, gyors és precíz csapat, minden a megbeszéltek szerint zajlott. Gondosan bántak a bútorokkal és a dobozokkal, semmi nem sérült meg. Igazán gördülékeny és stresszmentes költözés volt, bátran ajánlom mindenkinek!",
+  },{
+    name: "Beáta Kőpájer",
+    text: "Nagyon korrekt cég. Az árajánlatkérés gyorsan és zökkenőmentesen ment, és nagyon hamar válaszoltak is rá. Az árak is rendkívül korrektek. Köszönöm még egyszer a költöztetést, legközelebb is csak veletek fogunk költözni! 😉🏡🚛",
+  },{
+    name: "Gabriella Szász",
+    text: "Nagyon felkészültek, és mindig megállás nélkül dolgoznak. Az árak teljesen barátságosak, és aki nem akar megszakadni, valamint fontos számára, hogy semmi ne sérüljön meg, annak csak őket ajánlom!",
+  },{
+    name: "Máté Farkas",
+    text: "A legnagyobb tiszteletem a cég felé a legkorrektebb csapat, akikkel valaha dolgom volt! Sajnos az eredetileg megrendelt költöztetők az indulás előtt 2 órával lemondták, de Csabáék még munka közben is találtak megoldást küldtek egy másik autót a Sopron-Debrecen költöztetésre. Még egyszer hatalmas köszönet, srácok óriási pacsi!",
+  },{
+    name: "Szilvia Oláh",
+    text: "A költöztető cég srácai mindenben nagyon készségesek voltak. Nemcsak a költözésben, hanem a bútor szerelésben is profin segítettek. Gyorsak, megbízhatóak, kedvesek, máskor is őket választanám, ha költözésről lenne szó. Szívből ajánlom mindenkinek, köszönöm a segítségüket. 🤗",
+  },{
+    name: "Noel Tóth",
+    text: "A Fújak Trans csapata profi és nagyon segítőkész volt a költözés során. Minden bútort és csomagot gondosan kezeltek, időben érkeztek, és a kommunikáció is gördülékeny volt. Nagyon elégedett vagyok a szolgáltatásukkal, nyugodt szívvel ajánlom mindenkinek, aki stresszmentes költözést szeretne.🥇😁",
+  },{
+    name: "Szabina Vámosi",
+    text: "Nagyon szépen köszönjük a költöztetést a Fuják Trans csapatának! Másnapra öt embert is biztosítottak a raktárunk átpakolásához, és a srácok hajnaltól hajnalig, megállás nélkül dolgoztak. Emberfeletti teljesítményt nyújtottak hatalmas köszönet nektek! 🥰",
   },
 ];
 
 const galleryImages=[1,2,3,4,5,6,7,8,9,10];
 
 export default function FujakTransWebsite() {
-  const [language, setLanguage] = useState<"hu" | "en">("hu");
-  const [menuOpen, setMenuOpen] = useState(false);
   const [ready, setReady] = useState(false);
   const [isReady, setIsReady] = useState(false);
   const isloading = !isReady;
@@ -83,12 +105,17 @@ export default function FujakTransWebsite() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const duplicated=[...reviews,...reviews];
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
   const [website, setWebsite] = useState("");
   const [formStart] = useState(Date.now());
   const [address, setAddress] = useState("");
+  const [service, setService] = useState("");
+  const [note, setNote] = useState("");
+  const [date, setDate] = useState<Date | undefined>(undefined);
+  const [isPaused, setIsPaused] = useState(false);
 
   const [fromLocation, setFromLocation] = useState("");
   const [toLocation, setToLocation] = useState("");
@@ -320,14 +347,6 @@ const startDrag = (e: React.MouseEvent) => {
           />
         ))}
 
-        {/* Noise overlay */}
-        <div
-          className="absolute inset-0 opacity-[0.025]"
-          style={{
-            backgroundImage:
-              "url('https://grainy-gradients.vercel.app/noise.svg')",
-          }}
-        />
       </div>
 
       <main id="top">
@@ -343,7 +362,7 @@ const startDrag = (e: React.MouseEvent) => {
         </div>
 
         {/* HERO */}
-        <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
+        <section className="relative flex min-h-screen items-center justify-center overflow-hidden pb-28 md:pb-36">
           
 
           <div className="absolute inset-0 from-gray-300 to-gray-100/20 via-black/70 to-[#E0E0E0]" />
@@ -354,7 +373,18 @@ const startDrag = (e: React.MouseEvent) => {
   transition={{ duration: 1 }}
   className="relative z-20 w-full max-w-5xl px-5 sm:px-6 pt-32 text-center"
 >
-  <p className="mb-6 px-2 text-[10px] leading-relaxed uppercase tracking-[0.2em] text-[#000000] sm:text-sm sm:tracking-[0.35em] break-words">
+  <p className="
+mb-6
+px-4
+text-sm
+leading-7
+uppercase
+tracking-[0.12em]
+text-[#000000]
+sm:text-base
+md:text-sm
+md:tracking-[0.35em]
+">
     Költöztetés / Fuvarozás / Lomtalanítás Magyarország egész területén
   </p>
 
@@ -366,21 +396,66 @@ const startDrag = (e: React.MouseEvent) => {
     </span>
   </h1>
 
-  <p className="mx-auto mb-10 max-w-[90%] text-sm leading-7 text-[#000000] sm:max-w-3xl sm:text-lg md:text-xl">
+  <div className="relative mx-auto mb-14 max-w-5xl">
+
+  {/* narancs glow háttér */}
+  <div className="absolute inset-0 scale-110 bg-gradient-to-r from-[#f54d05]/30 via-transparent to-[#f54d05]/30 blur-3xl" />
+
+  <div className="
+  relative
+  overflow-hidden
+  rounded-[40px]
+  border
+  border-black/5
+  shadow-[0_40px_100px_rgba(245,77,5,0.18)]
+  ">
+
+    <Image
+      src="/images/hero-truck.webp"
+      alt="Fuják Trans költöztetés"
+      width={1600}
+      height={900}
+      priority
+      className="
+      h-[280px] sm:h-[340px] md:h-[450px]
+      sm:h-[340px]
+      md:h-[450px]
+      w-full
+      object-cover
+      transition
+      duration-700
+      hover:scale-105
+      "
+    />
+
+    {/* alsó sötét overlay szöveg olvashatóság miatt */}
+    <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+
+  </div>
+
+</div>
+
+  <p className="
+mx-auto
+mb-10
+max-w-[92%]
+text-base
+leading-8
+text-[#000000]
+sm:max-w-3xl
+sm:text-lg
+md:text-xl
+">
     Gyors, biztonságos és stresszmentes költöztetés, fuvarozás és
     lomtalanítás modern megoldásokkal és tapasztalt csapattal.
   </p>
 
-  <p className="mx-auto mb-10 max-w-[90%] text-sm font-bold leading-7 text-[#f54d05] sm:max-w-3xl sm:text-lg md:text-xl">
-    Nyíregyháza körzetében INGYENES helyszíni felmérést biztosítunk, mely során pontosabban átláthatjuk a költöztetést és annak költségeit, illetve részletesebb információt tudunk adni a költöztetés folyamatáról.
-  </p>
-
-  <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+  <div className="mb-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
     <a
       href="#contact"
       className="w-full rounded-full bg-[#f54d05] px-8 py-4 text-center text-lg font-bold text-black transition duration-300 hover:scale-105 sm:w-auto"
     >
-      Árajánlat kérése
+      Ingyenes árajánlat kérése
     </a>
 
     <a
@@ -389,7 +464,26 @@ const startDrag = (e: React.MouseEvent) => {
     >
       Munkáink megtekintése
     </a>
+
+  
+    
   </div>
+
+<p className="
+mb-6
+px-4
+text-sm
+leading-7
+uppercase
+tracking-[0.12em]
+text-[#f54d05]
+sm:text-base
+md:text-sm
+md:tracking-[0.35em]
+">
+    Nyíregyháza körzetében ingyenes helyszíni felmérést biztosítunk, mely során pontosabban átláthatjuk a költöztetést és annak költségeit, illetve részletesebb információt tudunk adni a költöztetés folyamatáról.
+  </p>
+
 </motion.div>
 
           {/* Floating CTA */}
@@ -448,7 +542,7 @@ const startDrag = (e: React.MouseEvent) => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
                   viewport={{ once: true }}
-                  className="group rounded-3xl border border-black/5 bg-zinc-950/50 p-8 backdrop-blur-xl transition duration-300 hover:-translate-y-2 hover:border-[#f54d05]/20"
+                  className="group rounded-3xl border border-black/5 bg-zinc-950/50 p-6 md:p-8 backdrop-blur-xl transition duration-300 hover:-translate-y-2 hover:border-[#f54d05]/20"
                 >
                   <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#f54d05]/10">
                     <div className="h-8 w-8 rounded-full bg-[#f54d05]" />
@@ -475,49 +569,145 @@ const startDrag = (e: React.MouseEvent) => {
         </section>
 
         {/* REVIEWS */}
-        <section id="reviews" className="bg-[#E0E0E0] py-32">
-          <div className="mx-auto max-w-7xl px-6">
-            <div className="mb-20 text-center">
-              <p className="mb-4 text-sm uppercase tracking-[0.3em] text-[#000000]">
-                Google értékelések
-              </p>
+        <section
+  id="reviews"
+  className="relative overflow-hidden py-32 bg-[#E0E0E0]"
+>
+  {/* EDGE FADE LEFT */}
+  <div className="
+pointer-events-none absolute left-0 top-0 z-10 h-full
+w-16 sm:w-24 md:w-40
+bg-gradient-to-r from-[#E0E0E0] to-transparent
+" />
 
-              <h2 className="text-4xl font-bold md:text-6xl">
-                Amit ügyfeleink mondanak
-              </h2>
+  {/* EDGE FADE RIGHT */}
+  <div className="
+pointer-events-none absolute right-0 top-0 z-10 h-full
+w-16 sm:w-24 md:w-40
+bg-gradient-to-l from-[#E0E0E0] to-transparent
+" />
+
+  <div className="mx-auto max-w-7xl px-6 mb-16 text-center">
+    <p className="mb-4 text-sm uppercase tracking-[0.35em] text-black/80">
+      Google értékelések
+    </p>
+
+    <h2 className="text-4xl md:text-6xl font-bold text-black">
+      Amit ügyfeleink mondanak
+    </h2>
+
+    <p className="mt-5 text-gray-600">
+      Valódi visszajelzések valós ügyfelektől
+    </p>
+  </div>
+
+  {/* MARQUEE WRAPPER */}
+  <div className="relative">
+    <div
+  className="
+    flex
+    gap-6
+    overflow-x-auto
+    snap-x
+    snap-mandatory
+    pb-6
+
+    md:w-max
+    md:overflow-visible
+
+    cursor-grab
+    active:cursor-grabbing
+
+    [-ms-overflow-style:none]
+    [scrollbar-width:none]
+    [&::-webkit-scrollbar]:hidden
+
+    md:animate-[scroll_45s_linear_infinite]
+    md:hover:[animation-play-state:paused]
+  "
+>
+      {duplicated.map((review, index) => (
+        <article
+          key={index}
+          className="
+group
+relative
+
+w-[88vw]
+sm:w-[420px]
+md:w-[360px]
+
+snap-center
+flex-shrink-0
+
+rounded-[28px]
+border
+border-black/10
+bg-gray-300/40
+p-8
+
+backdrop-blur-xl
+
+shadow-[0_20px_60px_-20px_rgba(0,0,0,0.25)]
+
+transition-all
+duration-500
+hover:-translate-y-2
+"
+        >
+          {/* subtle glow accent */}
+          <div className="absolute inset-0 rounded-[28px] opacity-0 group-hover:opacity-100 transition duration-500 bg-[radial-gradient(circle_at_top_left,rgba(245,77,5,0.15),transparent_60%)]" />
+
+          {/* stars */}
+          <div className="mb-6 flex gap-1 text-[#f54d05] text-lg">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <span key={i}>★</span>
+            ))}
+          </div>
+
+          {/* review text */}
+          <p className="mb-8 text-lg leading-relaxed text-black/90">
+            “{review.text}”
+          </p>
+
+          {/* footer */}
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <div className="
+                flex h-12 w-12 items-center justify-center
+                rounded-full bg-[#f54d05]
+                font-bold text-black
+                shadow-md
+              ">
+                {review.name.charAt(0)}
+              </div>
+
+              <div>
+                <p className="font-semibold text-black">
+                  {review.name}
+                </p>
+                <p className="text-sm text-gray-600">
+                  Google Review
+                </p>
+              </div>
             </div>
 
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-              {reviews.map((review) => (
-                <article
-                  key={review.name}
-                  className="rounded-3xl border border-black/5 bg-gray-300/40 p-8 backdrop-blur-xl"
-                >
-                  <div className="mb-6 flex items-center gap-1 text-[#f54d05]">
-                    {[...Array(5)].map((_, index) => (
-                      <span key={index}>★</span>
-                    ))}
-                  </div>
-
-                  <p className="mb-8 text-lg leading-relaxed text-black">
-                    “{review.text}”
-                  </p>
-
-                  <div className="flex items-center gap-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#f54d05] font-bold text-black">
-                      {review.name.charAt(0)}
-                    </div>
-
-                    <div>
-                      <p className="font-semibold">{review.name}</p>
-                      <p className="text-sm text-gray-700">Google Review</p>
-                    </div>
-                  </div>
-                </article>
-              ))}
+            <div className="flex items-center gap-2">
+              <img
+                src="/images/google-icon.webp"
+                className="h-6 w-6 opacity-80"
+                alt="Google"
+              />
             </div>
           </div>
-        </section>
+        </article>
+      ))}
+    </div>
+  </div>
+
+  {/* optional bottom fade for depth */}
+  <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#E0E0E0] to-transparent" />
+</section>
 
         {/* GALLERY */}
 <section
@@ -722,228 +912,208 @@ hover:-translate-y-2
               <div className="space-y-6 text-lg text-black">
                 <p>📞 +36 20 618 0015</p>
                 <p>✉️ csabafujak@icloud.com</p>
-                <p>📍 Nyíregyháza, Magyarország</p>
+                <p>📍 Nyíregyháza, Pazonyi út 39, 4400</p>
+                <p>Nyitvatartásunk: Mindennap 8:00 - 18:00</p>
+                <p>Hétvégén és ünnepnapokon is rendelkezésre állunk!</p>
               </div>
             </div>
 
             <div className="rounded-[40px] border border-black/5 bg-gradient-to-br from-[#f54d05] to-[#4A0404] p-10 backdrop-blur-xl">
-              <form
-onSubmit={handleSubmit}
-className="space-y-5"
->
+  <form onSubmit={handleSubmit} className="space-y-5">
 
-{/* Név + Email */}
+    {/* SZOLGÁLTATÁS VÁLASZTÓ */}
+    <select
+      value={service}
+      onChange={(e) => setService(e.target.value)}
+      className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4 outline-none"
+    >
+      <option value="">Szolgáltatás kiválasztása</option>
+      <option>Árufuvarozás</option>
+      <option>Költöztetés</option>
+      <option>Bútorszállítás</option>
+      <option>Lomtalanítás</option>
+      <option>Nehézgép szállítása</option>
+    </select>
 
-<div className="grid md:grid-cols-2 gap-4">
+    {/* Név + Email */}
+    <div className="grid md:grid-cols-2 gap-4">
+      <input
+        type="text"
+        placeholder="Név"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4 outline-none placeholder:text-gray-700"
+      />
 
-<input
-type="text"
-placeholder="Név"
-value={name}
-onChange={(e)=>setName(e.target.value)}
-className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4 outline-none placeholder:text-gray-700"
-/>
+      <input
+        type="email"
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4 outline-none placeholder:text-gray-700"
+      />
+    </div>
 
-<input
-type="email"
-placeholder="Email"
-value={email}
-onChange={(e)=>setEmail(e.target.value)}
-className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4 outline-none placeholder:text-gray-700"
-/>
+    {/* Telefon */}
+    <input
+      type="tel"
+      placeholder="Telefonszám"
+      value={phone}
+      onChange={(e) => setPhone(e.target.value)}
+      className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4 outline-none placeholder:text-gray-700"
+    />
 
+    {/* Honnan-hova */}
+    <div className="grid md:grid-cols-2 gap-4">
+      <input
+        type="text"
+        placeholder="Honnan költözne?"
+        value={fromLocation}
+        onChange={(e) => setFromLocation(e.target.value)}
+        className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4 outline-none placeholder:text-gray-700"
+      />
+
+      <input
+        type="text"
+        placeholder="Hova költözne?"
+        value={toLocation}
+        onChange={(e) => setToLocation(e.target.value)}
+        className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4 outline-none placeholder:text-gray-700"
+      />
+    </div>
+
+    {/* Emeletek */}
+    <div className="grid md:grid-cols-2 gap-4">
+      <select
+        value={fromFloor}
+        onChange={(e) => setFromFloor(e.target.value)}
+        className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4"
+      >
+        <option>Kertes ház</option>
+        <option>Földszint</option>
+        <option>1. emelet</option>
+        <option>2. emelet</option>
+        <option>3. emelet</option>
+        <option>4. emelet</option>
+        <option>5. emelet</option>
+        <option>6. emelet</option>
+        <option>7. emelet</option>
+        <option>8. emelet</option>
+        <option>9. emelet</option>
+        <option>10. emelet</option>
+        <option>10+ emelet</option>
+      </select>
+
+      <select
+        value={toFloor}
+        onChange={(e) => setToFloor(e.target.value)}
+        className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4"
+      >
+        <option>Kertes ház</option>
+        <option>Földszint</option>
+        <option>1. emelet</option>
+        <option>2. emelet</option>
+        <option>3. emelet</option>
+        <option>4. emelet</option>
+        <option>5. emelet</option>
+        <option>6. emelet</option>
+        <option>7. emelet</option>
+        <option>8. emelet</option>
+        <option>9. emelet</option>
+        <option>10. emelet</option>
+        <option>10+ emelet</option>
+      </select>
+    </div>
+
+    {/* Szoba + rakodó */}
+    <div className="grid md:grid-cols-2 gap-4">
+      <select
+        value={rooms}
+        onChange={(e) => setRooms(e.target.value)}
+        className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4"
+      >
+        <option>1 szoba</option>
+        <option>2 szoba</option>
+        <option>3 szoba</option>
+        <option>4+ szoba</option>
+      </select>
+
+      <select
+        value={loaders}
+        onChange={(e) => setLoaders(e.target.value)}
+        className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4"
+      >
+        <option>1 rakodó</option>
+        <option>2 rakodó</option>
+        <option>3 rakodó</option>
+        <option>4 rakodó</option>
+      </select>
+    </div>
+
+    {/* MEGJEGYZÉS 1 */}
+    <textarea
+      value={message}
+      onChange={(e) => setMessage(e.target.value)}
+      placeholder="Szállítani kívánt tételek listája, részletek (lakás nagysága, bútorok mennyisége, antik tárgyak, 100 kg súly feletti tárgyak, stb.)"
+      rows={4}
+      className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4 outline-none placeholder:text-gray-700"
+    />
+
+    {/* MEGJEGYZÉS 2 (külön state kellene ide ha akarod) */}
+    <textarea
+      value={note}
+      onChange={(e) => setNote(e.target.value)}
+      placeholder="Egyéb megjegyzés, információ, illetve kérdés a fuvarral kapcsolatban."
+      rows={4}
+      className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4 outline-none placeholder:text-gray-700"
+    />
+
+    {/* DÁTUM VÁLASZTÓ */}
+<div>
+  <label className="block mb-2 text-sm text-black/80">
+    Mikorra kéri a szállítást?
+  </label>
+
+  <DatePicker date={date} setDate={setDate} />
 </div>
 
+    {/* SUBMIT */}
+    <button
+      type="submit"
+      disabled={loading}
+      className="w-full rounded-xl bg-gray-300 py-4 font-bold text-black transition hover:scale-[1.02] disabled:opacity-50"
+    >
+      {loading ? (
+        <span className="flex items-center justify-center gap-2">
+          <span className="h-4 w-4 animate-spin rounded-full border-2 border-black border-t-transparent" />
+          Küldés...
+        </span>
+      ) : (
+        "Ajánlatkérés küldése"
+      )}
+    </button>
 
-{/* Telefon + cím */}
+    {status === "success" && (
+      <p className="text-green-500">Üzenet sikeresen elküldve!</p>
+    )}
 
-<div className="grid md:grid-cols-2 gap-4">
+    {status === "error" && (
+      <p className="text-red-500">Hiba történt, próbáld újra!</p>
+    )}
 
-<input
-type="tel"
-placeholder="Telefonszám"
-value={phone}
-onChange={(e)=>setPhone(e.target.value)}
-className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4 outline-none placeholder:text-gray-700"
-/>
-
-<input
-type="text"
-placeholder="Pontos cím"
-value={address}
-onChange={(e)=>setAddress(e.target.value)}
-className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4 outline-none placeholder:text-gray-700"
-/>
-
+    {/* HONEYPOT */}
+    <div className="hidden">
+      <input
+        type="text"
+        name="website"
+        value={website}
+        onChange={(e) => setWebsite(e.target.value)}
+        autoComplete="off"
+        tabIndex={-1}
+      />
+    </div>
+  </form>
 </div>
-
-
-{/* Honnan-hova */}
-
-<div className="grid md:grid-cols-2 gap-4">
-
-<input
-type="text"
-placeholder="Honnan"
-value={fromLocation}
-onChange={(e)=>setFromLocation(e.target.value)}
-className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4 outline-none placeholder:text-gray-700"
-/>
-
-<input
-type="text"
-placeholder="Hova"
-value={toLocation}
-onChange={(e)=>setToLocation(e.target.value)}
-className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4 outline-none placeholder:text-gray-700"
-/>
-
-</div>
-
-
-{/* Emeletek */}
-
-<div className="grid md:grid-cols-2 gap-4">
-
-<select
-value={fromFloor}
-onChange={(e)=>setFromFloor(e.target.value)}
-className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4"
->
-
-<option>Kertes ház</option>
-<option>Földszint</option>
-<option>1. emelet</option>
-<option>2. emelet</option>
-<option>3. emelet</option>
-<option>4. emelet</option>
-<option>5. emelet</option>
-<option>6. emelet</option>
-<option>7. emelet</option>
-<option>8. emelet</option>
-<option>9. emelet</option>
-<option>10. emelet</option>
-<option>10+ emelet</option>
-
-</select>
-
-<select
-value={toFloor}
-onChange={(e)=>setToFloor(e.target.value)}
-className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4"
->
-
-<option>Kertes ház</option>
-<option>Földszint</option>
-<option>1. emelet</option>
-<option>2. emelet</option>
-<option>3. emelet</option>
-<option>4. emelet</option>
-<option>5. emelet</option>
-<option>6. emelet</option>
-<option>7. emelet</option>
-<option>8. emelet</option>
-<option>9. emelet</option>
-<option>10. emelet</option>
-<option>10+ emelet</option>
-
-</select>
-
-</div>
-
-
-{/* Szoba + rakodó */}
-
-<div className="grid md:grid-cols-2 gap-4">
-
-<select
-value={rooms}
-onChange={(e)=>setRooms(e.target.value)}
-className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4"
->
-
-<option>1 szoba</option>
-<option>2 szoba</option>
-<option>3 szoba</option>
-<option>4+ szoba</option>
-
-</select>
-
-<select
-value={loaders}
-onChange={(e)=>setLoaders(e.target.value)}
-className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4"
->
-
-<option>1 rakodó</option>
-<option>2 rakodó</option>
-<option>3 rakodó</option>
-<option>4 rakodó</option>
-
-</select>
-
-</div>
-
-
-{/* Megjegyzés */}
-
-<textarea
-value={message}
-onChange={(e)=>setMessage(e.target.value)}
-placeholder="Egyéb megjegyzés (lift, különleges bútor, időpont, stb.)"
-rows={5}
-className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4 outline-none placeholder:text-gray-700"
-/>
-
-
-<button
-type="submit"
-disabled={loading}
-className="w-full rounded-xl bg-gray-300 py-4 font-bold text-black transition hover:scale-[1.02] disabled:opacity-50"
->
-
-{loading ? (
-
-<span className="flex items-center justify-center gap-2">
-
-<span className="h-4 w-4 animate-spin rounded-full border-2 border-black border-t-transparent"/>
-
-Küldés...
-
-</span>
-
-) : (
-
-"Ajánlatkérés küldése"
-
-)}
-
-</button>
-
-{status==="success" && (
-<p className="text-green-500">
-Üzenet sikeresen elküldve!
-</p>
-)}
-
-{status==="error" && (
-<p className="text-red-500">
-Hiba történt, próbáld újra!
-</p>
-)}
-
-<div className="hidden">
-  <input
-    type="text"
-    name="website"
-    value={website}
-    onChange={(e) => setWebsite(e.target.value)}
-    autoComplete="off"
-    tabIndex={-1}
-  />
-</div>
-              </form>
-            </div>
           </div>
         </section>
 

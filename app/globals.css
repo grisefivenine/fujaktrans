@@ -107,3 +107,32 @@ body::after {
     0 0 30px rgba(245,77,5,.2),
     0 0 70px rgba(245,77,5,.08);
 }
+
+.pulse-orange{
+  animation:pulse-orange 2s infinite;
+}
+
+@keyframes pulse-orange {
+  0%, 100% {
+    box-shadow:
+      0 0 30px rgba(245,77,5,.2),
+      0 0 70px rgba(245,77,5,.08);
+  }
+  50% {
+    box-shadow:
+      0 0 40px rgba(245,77,5,.3),
+      0 0 80px rgba(245,77,5,.1);
+  }
+}
+
+@keyframes scroll {
+
+from{
+transform:translateX(0);
+}
+
+to{
+transform:translateX(-50%);
+}
+
+}
