@@ -256,6 +256,38 @@ const startDrag = (e: React.MouseEvent) => {
   return () => window.removeEventListener("load", handleLoad);
 }, []);
 
+<script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context":"https://schema.org",
+      "@type":"MovingCompany",
+
+      name:"Fuják Trans",
+
+      telephone:"+36206180015",
+
+      email:"csabafujak@icloud.com",
+
+      address:{
+        "@type":"PostalAddress",
+        addressLocality:"Nyíregyháza",
+        streetAddress:"Pazonyi út 39",
+        postalCode:"4400",
+        addressCountry:"HU"
+      },
+
+      areaServed:"Hungary",
+
+      priceRange:"$$",
+
+      image:"https://fujaktrans.hu/images/hero-truck.webp",
+
+      url:"https://fujaktrans.hu"
+    }),
+  }}
+/>
+
   if (isloading) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-gray-300">
@@ -412,7 +444,7 @@ md:tracking-[0.35em]
 
     <Image
       src="/images/hero-truck.webp"
-      alt="Fuják Trans költöztetés"
+      alt="Fuják Trans költöztető teherautó Nyíregyházán"
       width={1600}
       height={900}
       priority
@@ -830,7 +862,7 @@ select-none
 
             <Image
               src={`/images/gallery-${image}.webp`}
-              alt={`Fuják Trans ${image}`}
+              alt={`Fuják Trans költöztetés referencia ${image}`}
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
               draggable={false}
