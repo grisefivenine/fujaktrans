@@ -71,7 +71,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="hu" data-scroll-behavior="smooth">
-      <body className="bg-gray-300 text-black pb-24 md:pb-0">
+      <body className="bg-gray-300 text-black">
         
         {/* HEADER - minden oldalon */}
         <Header />

@@ -138,17 +138,19 @@ export default function FujakTransWebsite() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+  service,
   name,
-email,
-phone,
-address,
-fromLocation,
-toLocation,
-fromFloor,
-toFloor,
-rooms,
-loaders,
-message,
+  email,
+  phone,
+  fromLocation,
+  toLocation,
+  fromFloor,
+  toFloor,
+  rooms,
+  loaders,
+  message,
+  note,
+  date,
   elapsedTime: Date.now() - formStart,
 }),
     });
@@ -1053,19 +1055,19 @@ hover:-translate-y-2
         onChange={(e) => setFromFloor(e.target.value)}
         className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4"
       >
-        <option>Kertes ház</option>
-        <option>Földszint</option>
-        <option>1. emelet</option>
-        <option>2. emelet</option>
-        <option>3. emelet</option>
-        <option>4. emelet</option>
-        <option>5. emelet</option>
-        <option>6. emelet</option>
-        <option>7. emelet</option>
-        <option>8. emelet</option>
-        <option>9. emelet</option>
-        <option>10. emelet</option>
-        <option>10+ emelet</option>
+        <option>Kertes házból</option>
+        <option>Földszintről</option>
+        <option>1. emeletről</option>
+        <option>2. emeletről</option>
+        <option>3. emeletről</option>
+        <option>4. emeletről</option>
+        <option>5. emeletről</option>
+        <option>6. emeletről</option>
+        <option>7. emeletről</option>
+        <option>8. emeletről</option>
+        <option>9. emeletről</option>
+        <option>10. emeletről</option>
+        <option>10+ emeletről</option>
       </select>
 
       <select
@@ -1073,19 +1075,19 @@ hover:-translate-y-2
         onChange={(e) => setToFloor(e.target.value)}
         className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4"
       >
-        <option>Kertes ház</option>
-        <option>Földszint</option>
-        <option>1. emelet</option>
-        <option>2. emelet</option>
-        <option>3. emelet</option>
-        <option>4. emelet</option>
-        <option>5. emelet</option>
-        <option>6. emelet</option>
-        <option>7. emelet</option>
-        <option>8. emelet</option>
-        <option>9. emelet</option>
-        <option>10. emelet</option>
-        <option>10+ emelet</option>
+        <option>Kertes házba</option>
+        <option>Földszintre</option>
+        <option>1. emeletre</option>
+        <option>2. emeletre</option>
+        <option>3. emeletre</option>
+        <option>4. emeletre</option>
+        <option>5. emeletre</option>
+        <option>6. emeletre</option>
+        <option>7. emeletre</option>
+        <option>8. emeletre</option>
+        <option>9. emeletre</option>
+        <option>10. emeletre</option>
+        <option>10+ emeletre</option>
       </select>
     </div>
 
