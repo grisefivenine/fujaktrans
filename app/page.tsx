@@ -567,18 +567,15 @@ md:tracking-[0.35em]
             </div>
 
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3 [transform:translateZ(0)]">
-              {services.map((service) => (
+              {services.map((service, index) => (
                 <motion.article
   key={service.title}
   initial={{ opacity: 0, y: 20 }}
-  whileInView={{ opacity: 1, y: 0 }}
+  animate={{ opacity: 1, y: 0 }}
   transition={{
-    duration: 0.45,
-    ease: "easeOut"
-  }}
-  viewport={{
-    once: true,
-    amount: 0.2
+    duration: 0.5,
+    delay: index * 0.08,
+    ease: "easeOut",
   }}
   style={{
     willChange: "transform, opacity",
@@ -586,13 +583,36 @@ md:tracking-[0.35em]
     WebkitBackfaceVisibility: "hidden",
     transform: "translateZ(0)",
   }}
-                  className="group rounded-3xl border border-black/5 bg-zinc-950/50 p-6 md:p-8 backdrop-blur-xl transition duration-300 hover:-translate-y-2 hover:border-[#f54d05]/20"
-                >
-                  <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#f54d05]/10">
-                    <div className="h-8 w-8 rounded-full bg-[#f54d05]" />
-                  </div>
+                  className="
+group relative overflow-hidden rounded-[28px]
+border border-black/10
+bg-gray-300/40
+p-6 md:p-8
+backdrop-blur-xl
 
-                  <h3 className="mb-4 text-2xl font-bold transition group-hover:text-[#f54d05]">
+shadow-[0_20px_60px_-20px_rgba(0,0,0,0.25)]
+transition-all duration-500
+
+hover:-translate-y-2
+hover:border-[#f54d05]/30
+hover:shadow-[0_30px_80px_-20px_rgba(245,77,5,0.25)]
+"
+                >
+                  <div className="
+absolute inset-0 opacity-0 group-hover:opacity-100
+transition duration-500
+bg-[radial-gradient(circle_at_top_left,rgba(245,77,5,0.18),transparent_60%)]
+pointer-events-none
+" />
+                  <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#f54d05]/10 overflow-hidden group-hover:scale-110 transition">
+  <img
+    src="images/logo.png"
+    alt="Fuják Trans"
+    className="h-10 w-10 object-contain drop-shadow-md"
+  />
+</div>
+
+                  <h3 className="mb-4 text-2xl font-bold transition-all duration-300 group-hover:text-[#f54d05]">
   {service.title}
 </h3>
 

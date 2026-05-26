@@ -80,13 +80,17 @@ const priceList = [
 ];
 
 export default function ArakPage() {
-  const [hours, setHours] = useState<number>(3);
-  const [km, setKm] = useState<number>(0);
+  const [hours, setHours] = useState<string>("3");
+  const [km, setKm] = useState<string>("0");
   const [service, setService] = useState<string>("1fő");
-  const [fromFloor, setFromFloor] = useState<number>(0);
-  const [toFloor, setToFloor] = useState<number>(0);
+  const [fromFloor, setFromFloor] = useState<string>("0");
+  const [toFloor, setToFloor] = useState<string>("0");
   const [hasLiftFrom, setHasLiftFrom] = useState<boolean>(false);
   const [hasLiftTo, setHasLiftTo] = useState<boolean>(false);
+  const hoursNum = Number(hours);
+  const kmNum = Number(km);
+  const fromFloorNum = Number(fromFloor);
+  const toFloorNum = Number(toFloor);
 
   // FIX 1: number (nem Number!)
   const prices: Record<string, number> = {
@@ -102,20 +106,20 @@ export default function ArakPage() {
 
   const base =
   service === "teherauto"
-    ? hours * selectedPrice
-    : hours * selectedPrice + (km > 15 ? (km - 15) * 280 : 0);
+    ? hoursNum * selectedPrice
+    : hoursNum * selectedPrice + (kmNum > 15 ? (kmNum - 15) * 280 : 0);
 
 // emelet felár
 let floorExtra = 0;
 
 if (service !== "teherauto") {
   const fromPenalty =
-    fromFloor >= 3 && !hasLiftFrom ? 2000 : 0;
+    fromFloorNum >= 3 && !hasLiftFrom ? 2000 : 0;
 
   const toPenalty =
-    toFloor >= 3 && !hasLiftTo ? 2000 : 0;
+    toFloorNum >= 3 && !hasLiftTo ? 2000 : 0;
 
-  floorExtra = (fromPenalty + toPenalty) * hours;
+  floorExtra = (fromPenalty + toPenalty) * hoursNum;
 }
 
 const total = base + floorExtra;
@@ -124,7 +128,7 @@ const total = base + floorExtra;
     <main className="min-h-screen bg-gray-300 text-black px-6 py-32">
 
       <div className="mx-auto max-w-5xl text-center mb-16">
-        <p className="text-sm tracking-[0.3em] text-[#E0E0E0] uppercase">
+        <p className="text-sm tracking-[0.3em] text-[#f54d05] uppercase">
           Árlista
         </p>
 
@@ -138,165 +142,287 @@ const total = base + floorExtra;
       </div>
 
       <div className="grid gap-6 md:grid-cols-2">
-        {priceList.map((item, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="rounded-3xl border border-black/5 bg-gray-300/5 p-8 backdrop-blur-xl hover:border-[#f54d05]/30 transition"
-          >
-            <h2 className="text-xl font-bold text-[#f54d05]">
-              {item.title}
-            </h2>
+  {priceList.map((item, i) => (
+    <motion.div
+      key={i}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="group relative rounded-3xl border border-black/5 bg-gray-300/40 backdrop-blur-xl p-8 transition duration-300 hover:-translate-y-2 hover:border-[#f54d05]/30 hover:shadow-2xl hover:shadow-[#f54d05]/10"
+    >
 
-            <p className="mt-2 text-gray-600">
-              {item.note}
-            </p>
+      {/* soft glow háttér (services feeling) */}
+      <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition bg-[#f54d05]/5 blur-2xl" />
 
-            <div className="mt-6 text-2xl font-bold">
-              {item.price}
-            </div>
-          </motion.div>
-        ))}
+      <div className="relative">
+
+        <h2 className="text-xl font-bold text-black group-hover:text-[#f54d05] transition">
+          {item.title}
+        </h2>
+
+        <p className="mt-2 text-gray-600">
+          {item.note}
+        </p>
+
+        <div className="mt-6 text-2xl font-bold text-black">
+          {item.price}
+        </div>
+
       </div>
+    </motion.div>
+  ))}
+</div>
 
       {/* Példa rész */}
-      <div className="mt-20 rounded-3xl border border-black/10 bg-gray-300/40 p-10">
-        <h3 className="text-2xl font-bold mb-6 text-[#f54d05]">
-          Példa számítás
-        </h3>
+<div className="mt-16 relative">
 
-        <p className="text-black leading-relaxed">
-          Nyíregyháza – Kisvárda 2 szobás lakás költöztetése a 3. emeletről:
-          <br /><br />
+  {/* glow háttér mint a többi szekciónál */}
+  <div className="absolute inset-0 pointer-events-none">
+    <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-[400px] h-[400px] bg-[#f54d05]/10 blur-[120px] rounded-full" />
+  </div>
 
-          Kiszállás: <b>10.000 Ft</b><br />
-          3 óra munka × 15.000 Ft = <b>45.000 Ft</b><br />
-          100 km × 280 Ft = <b>28.000 Ft</b><br /><br />
+  <div className="relative rounded-3xl border border-black/10 bg-gray-300/40 backdrop-blur-xl p-10 shadow-xl">
 
-          <span className="text-black font-bold">
-            Teljes költség: 83.000 Ft
-          </span>
+    {/* header */}
+    <div className="mb-8">
+      <p className="text-sm tracking-[0.3em] uppercase text-black/60">
+        Példa
+      </p>
+
+      <h3 className="text-3xl md:text-4xl font-black mt-3 text-black">
+        Példa számítás
+      </h3>
+
+      <p className="text-black/60 mt-3">
+        Egy valós költöztetési szituáció lebontva
+      </p>
+    </div>
+
+    {/* content */}
+    <div className="space-y-4 text-black/80">
+
+      <div className="rounded-2xl border border-black/10 bg-gray-300/30 p-5">
+        <p className="font-semibold">
+          📍 Útvonal
+        </p>
+        <p className="mt-1 text-black/70">
+          Nyíregyháza – Kisvárda, 2 szobás lakás, 3. emelet
         </p>
       </div>
 
-      {/* CALCULATOR */}
-<section className="py-24 bg-[#E0E0E0] mt-20">
-  <div className="mx-auto max-w-4xl px-6">
-
-    <h2 className="text-4xl font-bold text-center mb-10">
-      Ár kalkulátor
-    </h2>
-
-    <div className="rounded-3xl border border-black/10 bg-gray-300/40 p-8 space-y-6">
-
-      {/* service */}
-      <div>
-        <p className="text-gray-600 mb-2">Szolgáltatás</p>
-        <select
-          value={service}
-          onChange={(e) => setService(e.target.value)}
-          className="w-full p-4 rounded-xl bg-gray-300 border border-black/10"
-        >
-          <option value="1fő">Költöztetés 1 fővel</option>
-          <option value="2fő">Költöztetés 2 fővel</option>
-          <option value="3fő">Költöztetés 3 fővel</option>
-          <option value="4fő">Költöztetés 4 fővel</option>
-          <option value="teherauto">Teherautó bérlés</option>
-        </select>
+      <div className="rounded-2xl border border-black/10 bg-gray-300/30 p-5">
+        <p className="font-semibold">
+          🚚 Kiszállás
+        </p>
+        <p className="mt-1 text-black/70">
+          10.000 Ft alapdíj
+        </p>
       </div>
 
-      {/* hours */}
-      <div>
-        <p className="text-gray-600 mb-2">Órák száma</p>
-        <input
-          type="number"
-          min={1}
-          value={hours}
-          onChange={(e) => setHours(Number(e.target.value))}
-          className="w-full p-4 rounded-xl bg-gray-300 border border-black/10"
-        />
+      <div className="rounded-2xl border border-black/10 bg-gray-300/30 p-5">
+        <p className="font-semibold">
+          ⏱ Munkaidő
+        </p>
+        <p className="mt-1 text-black/70">
+          3 óra × 15.000 Ft = <span className="font-bold text-black">45.000 Ft</span>
+        </p>
       </div>
 
-      {/* km */}
-      {service !== "teherauto" && (
-        <div>
-          <p className="text-gray-600 mb-2">Kilométer</p>
-          <input
-            type="number"
-            min={0}
-            value={km}
-            onChange={(e) => setKm(Number(e.target.value))}
-            className="w-full p-4 rounded-xl bg-gray-300 border border-black/10"
-          />
-        </div>
-      )}
+      <div className="rounded-2xl border border-black/10 bg-gray-300/30 p-5">
+        <p className="font-semibold">
+          📦 Távolság
+        </p>
+        <p className="mt-1 text-black/70">
+          100 km × 280 Ft = <span className="font-bold text-black">28.000 Ft</span>
+        </p>
+      </div>
 
-      {/* lift + emelet MODERN UI */}
-{service !== "teherauto" && (
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-
-    {/* FROM */}
-    <div className="space-y-3 rounded-2xl border border-black/10 bg-gray-300/30 p-4">
-      <p className="text-gray-600">Honnan emelet</p>
-
-      <input
-        type="number"
-        value={fromFloor}
-        onChange={(e) => setFromFloor(Number(e.target.value))}
-        className="w-full p-3 rounded-xl bg-gray-300 border border-black/10"
-        placeholder="Emelet"
-      />
-
-      <Toggle
-        checked={hasLiftFrom}
-        onChange={setHasLiftFrom}
-        label="Van lift"
-      />
     </div>
 
-    {/* TO */}
-    <div className="space-y-3 rounded-2xl border border-black/10 bg-gray-300/30 p-4">
-      <p className="text-gray-600">Hova emelet</p>
+    {/* total highlight */}
+    <div className="mt-8 rounded-3xl border border-[#f54d05]/20 bg-gradient-to-r from-gray-300 to-gray-200 p-8 relative overflow-hidden">
 
-      <input
-        type="number"
-        value={toFloor}
-        onChange={(e) => setToFloor(Number(e.target.value))}
-        className="w-full p-3 rounded-xl bg-gray-300 border border-black/10"
-        placeholder="Emelet"
-      />
+      <div className="absolute inset-0 bg-[#f54d05]/10 blur-3xl" />
 
-      <Toggle
-        checked={hasLiftTo}
-        onChange={setHasLiftTo}
-        label="Van lift"
-      />
+      <div className="relative text-center">
+        <p className="text-sm text-black/60 mb-2">
+          Teljes költség
+        </p>
+
+        <p className="text-4xl md:text-5xl font-black text-[#f54d05]">
+          83.000 Ft
+        </p>
+      </div>
+
     </div>
-
-  </div>
-)}
-
-      {/* result */}
-      <div className="pt-6 border-t border-black/10">
-  <p className="text-gray-600 mb-2">Becsült ár</p>
-
-  <div className="relative overflow-hidden rounded-2xl border border-[#f54d05]/20 bg-gradient-to-r from-black to-[#1a0a05] p-6">
-    
-    <div className="absolute inset-0 opacity-20 bg-[#f54d05] blur-3xl" />
-
-    <p className="relative text-5xl font-black text-[#f54d05]">
-      {total.toLocaleString()} Ft
-    </p>
-
-    <p className="relative text-sm text-gray-600 mt-2">
-      Ez egy becsült összeg, pontos ár telefonon egyeztetve
-    </p>
 
   </div>
 </div>
 
+      {/* CALCULATOR */}
+<section className="py-28 bg-gray-300 mt-20 relative overflow-hidden">
+
+  {/* háttér glow (mint hero) */}
+  <div className="absolute inset-0 pointer-events-none">
+    <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#f54d05]/10 blur-[140px] rounded-full" />
+    <div className="absolute bottom-[-200px] right-[-100px] w-[500px] h-[500px] bg-[#f54d05]/10 blur-[140px] rounded-full" />
+  </div>
+
+  <div className="relative mx-auto max-w-5xl px-6">
+
+    {/* HEADER */}
+    <div className="text-center mb-14">
+      <p className="text-sm tracking-[0.3em] uppercase text-black/60">
+        Kalkulátor
+      </p>
+
+      <h2 className="text-4xl md:text-5xl font-black mt-4">
+        Ár kalkulátor
+      </h2>
+
+      <p className="mt-5 text-black/60 max-w-2xl mx-auto">
+        Add meg a részleteket és azonnal látod a becsült költséget
+      </p>
+    </div>
+
+    {/* MAIN CARD */}
+    <div className="relative rounded-3xl border border-black/10 bg-gray-300/40 backdrop-blur-xl p-8 md:p-10 shadow-2xl overflow-hidden">
+
+      {/* finom border glow */}
+      <div className="absolute inset-0 rounded-3xl pointer-events-none border border-[#f54d05]/10" />
+
+      <div className="space-y-6">
+
+        {/* SERVICE */}
+        <div className="group rounded-2xl border border-black/10 bg-gray-300/30 p-5 transition hover:border-[#f54d05]/30 hover:-translate-y-0.5 duration-300">
+          <p className="text-black/60 mb-3 text-sm tracking-wide">
+            Szolgáltatás
+          </p>
+
+          <select
+            value={service}
+            onChange={(e) => setService(e.target.value)}
+            className="w-full p-4 rounded-xl bg-gray-300 border border-black/10 text-black outline-none focus:border-[#f54d05] transition"
+          >
+            <option value="1fő">Költöztetés 1 fővel</option>
+            <option value="2fő">Költöztetés 2 fővel</option>
+            <option value="3fő">Költöztetés 3 fővel</option>
+            <option value="4fő">Költöztetés 4 fővel</option>
+            <option value="teherauto">Teherautó bérlés</option>
+          </select>
+        </div>
+
+        {/* HOURS */}
+        <div className="group rounded-2xl border border-black/10 bg-gray-300/30 p-5 transition hover:border-[#f54d05]/30 hover:-translate-y-0.5 duration-300">
+          <p className="text-black/60 mb-3 text-sm tracking-wide">
+            Órák száma
+          </p>
+
+          <input
+  type="number"
+  min={1}
+  value={hours}
+  onChange={(e) => setHours(e.target.value)}
+            className="w-full p-4 rounded-xl bg-gray-300 border border-black/10 text-black outline-none focus:border-[#f54d05] transition"
+          />
+        </div>
+
+        {/* KM */}
+        {service !== "teherauto" && (
+          <div className="group rounded-2xl border border-black/10 bg-gray-300/30 p-5 transition hover:border-[#f54d05]/30 hover:-translate-y-0.5 duration-300">
+            <p className="text-black/60 mb-3 text-sm tracking-wide">
+              Kilométer
+            </p>
+
+            <input
+              type="number"
+              min={0}
+              value={km}
+              onChange={(e) => setKm(e.target.value)}
+              className="w-full p-4 rounded-xl bg-gray-300 border border-black/10 text-black outline-none focus:border-[#f54d05] transition"
+            />
+          </div>
+        )}
+
+        {/* FLOOR */}
+        {service !== "teherauto" && (
+          <div className="grid md:grid-cols-2 gap-6">
+
+            {/* FROM */}
+            <div className="rounded-2xl border border-black/10 bg-gray-300/30 p-5 hover:border-[#f54d05]/30 transition">
+              <p className="text-black/60 mb-3 text-sm">
+                Honnan emelet
+              </p>
+
+              <input
+                type="number"
+                value={fromFloor}
+                onChange={(e) => setFromFloor(e.target.value)}
+                className="w-full p-4 rounded-xl bg-gray-300 border border-black/10 text-black outline-none focus:border-[#f54d05] transition"
+              />
+
+              <div className="mt-4">
+                <Toggle
+                  checked={hasLiftFrom}
+                  onChange={setHasLiftFrom}
+                  label="Van lift"
+                />
+              </div>
+            </div>
+
+            {/* TO */}
+            <div className="rounded-2xl border border-black/10 bg-gray-300/30 p-5 hover:border-[#f54d05]/30 transition">
+              <p className="text-black/60 mb-3 text-sm">
+                Hova emelet
+              </p>
+
+              <input
+                type="number"
+                value={toFloor}
+                onChange={(e) => setToFloor(e.target.value)}
+                className="w-full p-4 rounded-xl bg-gray-300 border border-black/10 text-black outline-none focus:border-[#f54d05] transition"
+              />
+
+              <div className="mt-4">
+                <Toggle
+                  checked={hasLiftTo}
+                  onChange={setHasLiftTo}
+                  label="Van lift"
+                />
+              </div>
+            </div>
+
+          </div>
+        )}
+
+        {/* RESULT - HERO STYLE */}
+        <div className="pt-6 border-t border-black/10">
+
+          <p className="text-black/60 mb-4">
+            Becsült ár
+          </p>
+
+          <div className="relative overflow-hidden rounded-3xl border border-[#f54d05]/20 bg-gradient-to-br from-gray-300 to-gray-200 p-10">
+
+            {/* glow layer */}
+            <div className="absolute inset-0 bg-[#f54d05]/10 blur-3xl" />
+
+            {/* animated feel */}
+            <div className="relative text-center">
+
+              <p className="text-5xl md:text-6xl font-black text-[#f54d05] drop-shadow-sm">
+                {total.toLocaleString()} Ft
+              </p>
+
+              <p className="text-black/60 mt-3 text-sm">
+                Ez egy becsült összeg, pontos ár telefonon egyeztetve
+              </p>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 </section>

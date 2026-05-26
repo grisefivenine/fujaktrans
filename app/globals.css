@@ -50,23 +50,6 @@ body::before {
   z-index: -2;
 }
 
-/* film grain */
-
-body::after {
-  content: "";
-
-  position: fixed;
-  inset: 0;
-
-  opacity: .015;
-
-  background-image:
-    url("https://grainy-gradients.vercel.app/noise.svg");
-
-  pointer-events: none;
-  z-index: -1;
-}
-
 /* selection */
 
 ::selection {

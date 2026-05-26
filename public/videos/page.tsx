@@ -178,15 +178,6 @@ export default function FujakTransWebsite() {
             }}
           />
         ))}
-
-        {/* Noise overlay */}
-        <div
-          className="absolute inset-0 opacity-[0.025]"
-          style={{
-            backgroundImage:
-              "url('https://grainy-gradients.vercel.app/noise.svg')",
-          }}
-        />
       </div>
 
       {/* HEADER */}
