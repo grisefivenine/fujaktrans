@@ -150,7 +150,7 @@ export default function FujakTransWebsite() {
   loaders,
   message,
   note,
-  date,
+  date: date ? date.toISOString().split("T")[0] : "",
   elapsedTime: Date.now() - formStart,
 }),
     });
