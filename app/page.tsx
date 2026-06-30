@@ -975,14 +975,44 @@ hover:-translate-y-2
                 Beszéljünk a szállításról.
               </h2>
 
-              <div className="space-y-6 text-lg text-black">
+              <div className="space-y-6 text-lg text-[#f54d05]">
                 <p>📞 +36 20 618 0015</p>
                 <p>✉️ csabafujak@icloud.com</p>
                 <p>📍 Nyíregyháza, Pazonyi út 39, 4400</p>
-                <p>Nyitvatartásunk: Mindennap 8:00 - 18:00</p>
-                <p>Hétvégén és ünnepnapokon is rendelkezésre állunk!</p>
               </div>
+              <div className="mt-12">
+  <h3 className="mb-4 text-2xl font-bold text-black">
+    Ügyfélszolgálat
+  </h3>
+
+  <div className="space-y-3 text-sm sm:text-base">
+    
+    <div className="flex items-start gap-6">
+      <span className="w-40 text-black">
+        Hétfő - Szombat
+      </span>
+      <span className="font-semibold text-[#f54d05]">
+        8:00 - 18:00
+      </span>
+    </div>
+
+    <div className="flex items-start gap-13">
+      <span className="w-40 text-black">
+        Vasárnap
+      </span>
+      <span className="max-w-md font-semibold text-[#f54d05]">
+        A telefonos ügyfélszolgálat szünetel, kérjük keressen e-mailben!
+      </span>
+    </div>
+
+  </div>
+
+  <p className="mt-6 text-black font-medium">
+    Nyitvatartási időn kívüli szállítás megbeszélés alapján!
+  </p>
+</div>
             </div>
+        
 
             <div className="rounded-[40px] border border-black/5 bg-gradient-to-br from-[#f54d05] to-[#4A0404] p-10 backdrop-blur-xl">
   <form onSubmit={handleSubmit} className="space-y-5">
@@ -1184,21 +1214,47 @@ hover:-translate-y-2
         </section>
 
       
-      <div className="fixed bottom-0 left-0 z-[120] flex w-full gap-3 border-t border-black/10 bg-gray-300/80 p-4 backdrop-blur-2xl md:hidden">
-  <a
-    href="tel:+36206180015"
-    className="flex-1 rounded-2xl bg-gradient-to-br from-[#f54d05] to-[#4A0404] px-4 py-4 text-center font-bold text-black"
-  >
-    📞 Hívás
-  </a>
+      <div className="fixed inset-x-0 bottom-3 z-[120] px-3 md:hidden">
+  <div className="mx-auto flex max-w-md gap-3 rounded-[28px] border border-white/70 bg-white/75 p-3 backdrop-blur-2xl shadow-[0_12px_40px_rgba(0,0,0,0.12)]">
 
-  <a
-    href="#contact"
-    className="flex-1 rounded-2xl border border-black/10 bg-gray-300/5 px-4 py-4 text-center font-bold text-black"
-  >
-    Árajánlat
-  </a>
-</div></main>
+    {/* CALL BUTTON */}
+    <a
+      href="tel:+36206180015"
+      className="
+        flex flex-1 items-center justify-center gap-2
+        rounded-[28px]
+        bg-[#f54d05]
+        px-4 py-4
+        text-center font-semibold text-white
+        shadow-[0_8px_24px_rgba(245,77,5,0.28)]
+        transition-all duration-300
+        active:scale-[0.97]
+      "
+    >
+      <span className="text-base">📞</span>
+      Hívás
+    </a>
+
+    {/* QUOTE BUTTON */}
+    <a
+      href="#contact"
+      className="
+        flex flex-1 items-center justify-center
+        rounded-[28px]
+        border border-black/5
+        bg-white/70
+        px-4 py-4
+        text-center font-semibold text-gray-800
+        shadow-[0_4px_20px_rgba(0,0,0,0.05)]
+        transition-all duration-300
+        active:scale-[0.97]
+      "
+    >
+      Árajánlat
+    </a>
+  </div>
+</div>
+</main>
     </div>
   );
 }
