@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 
 const images = Array.from(
-  { length: 50 },
+  { length: 82 },
   (_, i) => i + 1
 );
 
@@ -14,17 +14,17 @@ const [selected,setSelected]=useState<number|null>(null);
 
 return(
 
-<div className="min-h-screen bg-[#FFFFFF] text-black p-6">
+<div className="min-h-screen bg-[#FFFFFF] text-black px-6 pt-36 md:pt-44 pb-6">
 
-<div className="mx-auto max-w-7xl">
+  <div className="mx-auto max-w-7xl">
 
-<h1 className="mb-4 text-5xl font-bold">
-Referenciák
-</h1>
+    <h1 className="mb-4 text-4xl md:text-5xl font-bold">
+      Referenciák
+    </h1>
 
-<p className="mb-16 text-gray-600">
-Munkáink teljes galériája
-</p>
+    <p className="mb-16 text-gray-600 text-lg">
+      Munkáink teljes galériája
+    </p>
 
 <div className="rounded-[30px] overflow-hidden border border-black/10">
 

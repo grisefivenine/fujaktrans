@@ -170,33 +170,44 @@ export default function InfoPage() {
       </h2>
 
       <p className="leading-8 text-black/75">
-        Vállalatunk főként új és használt bútorok, háztartási nagygépek
-        házhoz szállításával foglalkozik. Emellett bútorok szakszerű és gyors
-        összeszerelésében, komplett költöztetés lebonyolításában,
-        csomagküldési és áruszállítási szolgáltatásokban is segítséget
-        nyújtunk.
+        Cégünk megbízható és gyors szállítási szolgáltatásokat nyújt magánszemélyek és vállalkozások számára országszerte.
       </p>
 
       <p className="mt-6 leading-8 text-black/75">
-        Lomtalanítási feladatokat is ellátunk, igény szerint az ország bármely
-        területén készséggel rendelkezésre állunk.
+        Vállaljuk új és használt bútorok, háztartási nagygépek, csomagok és áruk szállítását, valamint bútorok szakszerű összeszerelését, teljes körű költöztetést lakások, családi házak és irodák számára, továbbá lomtalanítást és feleslegessé vált tárgyak elszállítását is.
+      </p>
+
+      <p className="mt-6 leading-8 text-black/75">
+      Munkánkat minden esetben pontosan, körültekintően és ügyfeleink igényeihez igazodva végezzük. Legyen szó egyetlen bútor vagy háztartási gép szállításáról, komplett költöztetésről vagy nagyobb mennyiségű áru fuvarozásáról, számíthat ránk.
+      </p>
+
+      <p className="mt-6 leading-8 text-black/75">
+      Az ország bármely pontján rendelkezésre állunk, és arra törekszünk, hogy minden megbízást gyorsan, biztonságosan és korrekt áron teljesítsünk.
+      </p>
+
+      <p className="mt-6 leading-8 font-bold text-black/75">
+      Válasszon minket, ha fontos Önnek a megbízhatóság, a pontosság és a gondos munkavégzés!
       </p>
 
       <h3 className="mt-12 mb-5 text-2xl font-bold">
-        Időpontfoglalás - de hogyan?
+        Időpontfoglalás - Hogyan működik?
       </h3>
 
-      <p className="leading-8 text-black/75">
-        Aznapi kiszállítás nem minden esetben lehetséges, hiszen
-        diszpécsereink a lehető legoptimálisabban tervezik a napi fuvarokat.
-        Ennek ellenére előfordulhat, hogy rendelése még belefér az aznapi
-        szállítások közé.
+      <p className="mt-6 leading-8 text-black/75">
+        <span className="font-semibold text-[#f54d05]">Javasoljuk, hogy legalább 2-3 nappal korábban foglaljon időpontot</span>
+      , így biztosabban tudjuk teljesíteni kérését.
       </p>
 
+      <p className="leading-8 text-black/75">
+        Ha sürgős a szállítás, vegye fel velünk a kapcsolatot telefonon vagy e-mailben – szabad kapacitás esetén aznapi kiszállítást és aznapi árufuvarozást is vállalunk.
+      </p>
+
+      <h3 className="mt-12 mb-5 text-2xl font-bold">
+        Ingyenes helyszíni felmérés
+      </h3>
+
       <p className="mt-6 leading-8 text-black/75">
-        Tippünk: minimum{" "}
-        <span className="font-semibold text-[#f54d05]">2-3 nappal korábban</span>{" "}
-        egyeztessen velünk, hogy biztosan teljesíteni tudjuk igényeit.
+      Igény esetén ingyenes helyszíni felmérést is biztosítunk. Ehhez előzetes telefonos egyeztetés szükséges, hogy felmérhessük a költöztetés részleteit, és pontos, átlátható árajánlatot készíthessünk.
       </p>
 
       <a
