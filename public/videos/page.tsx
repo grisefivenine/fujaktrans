@@ -90,13 +90,13 @@ export default function FujakTransWebsite() {
 
   if (loading) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-gray-300">
+      <div className="flex min-h-screen items-center justify-center bg-[#FFFFFF]">
         <div className="space-y-6 text-center">
           <div className="mx-auto h-16 w-16 animate-spin rounded-full border-4 border-[#f54d05] border-t-transparent" />
 
           <div className="space-y-3">
-            <div className="h-4 w-48 animate-pulse rounded-full bg-gray-300/10 mx-auto" />
-            <div className="h-4 w-32 animate-pulse rounded-full bg-gray-300/5 mx-auto" />
+            <div className="h-4 w-48 animate-pulse rounded-full bg-[#FFFFFF]/10 mx-auto" />
+            <div className="h-4 w-32 animate-pulse rounded-full bg-[#FFFFFF]/5 mx-auto" />
           </div>
         </div>
       </div>
@@ -104,7 +104,7 @@ export default function FujakTransWebsite() {
   }
 
   return (
-  <div className="min-h-screen bg-gray-300 text-black overflow-x-hidden transition-all duration-700">
+  <div className="min-h-screen bg-[#FFFFFF] text-black overflow-x-hidden transition-all duration-700">
     <div
   className={`transition-all duration-1000 ${
     ready ? "opacity-100" : "opacity-0 scale-[1.02]"
@@ -151,7 +151,7 @@ export default function FujakTransWebsite() {
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="absolute left-[30%] top-[-300px] h-[1500px] w-[220px] rotate-[-12deg] bg-gradient-to-b from-[#E0E0E0]/15 to-transparent blur-3xl"
+          className="absolute left-[30%] top-[-300px] h-[1500px] w-[220px] rotate-[-12deg] bg-gradient-to-b from-[#FFFFFF]/15 to-transparent blur-3xl"
         />
 
         {/* Particles */}
@@ -181,7 +181,7 @@ export default function FujakTransWebsite() {
       </div>
 
       {/* HEADER */}
-      <header className="fixed left-0 top-0 z-50 w-full border-b border-black/5 bg-gray-300/30 backdrop-blur-2xl">
+      <header className="fixed left-0 top-0 z-50 w-full border-b border-black/5 bg-[#FFFFFF]/30 backdrop-blur-2xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <a
             href="#top"
@@ -258,7 +258,7 @@ export default function FujakTransWebsite() {
         </div>
 
         {menuOpen && (
-          <div className="border-t border-black/10 bg-gray-300/95 px-6 py-6 md:hidden">
+          <div className="border-t border-black/10 bg-[#FFFFFF]/95 px-6 py-6 md:hidden">
             <nav className="flex flex-col gap-6 text-lg">
               <a href="#services" onClick={() => setMenuOpen(false)}>
                 Szolgáltatások
@@ -282,7 +282,7 @@ export default function FujakTransWebsite() {
 
       <main id="top">
         {/* FLOATING MAP */}
-        <div className="fixed bottom-24 right-6 z-40 hidden overflow-hidden rounded-2xl border border-black/10 bg-gray-300/50 p-2 backdrop-blur-xl lg:block">
+        <div className="fixed bottom-24 right-6 z-40 hidden overflow-hidden rounded-2xl border border-black/10 bg-[#FFFFFF]/50 p-2 backdrop-blur-xl lg:block">
           <iframe
             title="Google Maps"
             src="https://www.google.com/maps?q=Nyíregyháza&output=embed"
@@ -309,7 +309,7 @@ export default function FujakTransWebsite() {
             <source src="/videos/hero-video.mp4" type="video/mp4" />
           </video>
 
-          <div className="absolute inset-0 from-white to-gray-100/20 via-black/70 to-[#E0E0E0]" />
+          <div className="absolute inset-0 from-white to-gray-100/20 via-black/70 to-[#FFFFFF]" />
 
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -317,11 +317,11 @@ export default function FujakTransWebsite() {
             transition={{ duration: 1 }}
             className="relative z-20 max-w-5xl px-6 pt-32 text-center"
           >
-            <p className="mb-6 text-sm uppercase tracking-[0.45em] text-[#E0E0E0]">
+            <p className="mb-6 text-sm uppercase tracking-[0.45em] text-[#FFFFFF]">
               Költöztetés/Fuvarozás/Lomtalanítás Magyarország egész területén
             </p>
 
-            <h1 className="mb-6 text-4xl font-bold leading-tight sm:text-5xl md:text-7xl text-[#E0E0E0]">
+            <h1 className="mb-6 text-4xl font-bold leading-tight sm:text-5xl md:text-7xl text-[#FFFFFF]">
               Az Ön bútorai.
               <br />
               <span className="text-[#f54d05]">
@@ -362,32 +362,32 @@ export default function FujakTransWebsite() {
 
           {/* Quick form */}
           <div className="absolute bottom-10 left-1/2 z-20 hidden w-[92%] max-w-5xl -translate-x-1/2 lg:block">
-            <div className="rounded-3xl border border-black/10 bg-gray-300/5 p-6 shadow-2xl backdrop-blur-2xl">
+            <div className="rounded-3xl border border-black/10 bg-[#FFFFFF]/5 p-6 shadow-2xl backdrop-blur-2xl">
               <form className="grid grid-cols-1 gap-4 md:grid-cols-5">
                 <input
                   type="text"
                   placeholder="Név"
                   autoComplete="name"
-                  className="rounded-xl border border-black/10 bg-gray-300/40 px-4 py-4 outline-none placeholder:text-gray-700"
+                  className="rounded-xl border border-black/10 bg-[#FFFFFF]/40 px-4 py-4 outline-none placeholder:text-gray-700"
                 />
 
                 <input
                   type="tel"
                   placeholder="Telefonszám"
                   autoComplete="tel"
-                  className="rounded-xl border border-black/10 bg-gray-300/40 px-4 py-4 outline-none placeholder:text-gray-700"
+                  className="rounded-xl border border-black/10 bg-[#FFFFFF]/40 px-4 py-4 outline-none placeholder:text-gray-700"
                 />
 
                 <input
                   type="text"
                   placeholder="Honnan?"
-                  className="rounded-xl border border-black/10 bg-gray-300/40 px-4 py-4 outline-none placeholder:text-gray-700"
+                  className="rounded-xl border border-black/10 bg-[#FFFFFF]/40 px-4 py-4 outline-none placeholder:text-gray-700"
                 />
 
                 <input
                   type="text"
                   placeholder="Hova?"
-                  className="rounded-xl border border-black/10 bg-gray-300/40 px-4 py-4 outline-none placeholder:text-gray-700"
+                  className="rounded-xl border border-black/10 bg-[#FFFFFF]/40 px-4 py-4 outline-none placeholder:text-gray-700"
                 />
 
                 <button
@@ -402,12 +402,12 @@ export default function FujakTransWebsite() {
         </section>
 
         {/* STATS */}
-        <section className="bg-[#E0E0E0] py-28">
+        <section className="bg-[#FFFFFF] py-28">
           <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-6 text-center md:grid-cols-4">
             {stats.map(([number, label]) => (
               <div
                 key={label}
-                className="rounded-3xl border border-black/5 bg-gray-300/40 p-10 backdrop-blur-xl"
+                className="rounded-3xl border border-black/5 bg-[#FFFFFF]/40 p-10 backdrop-blur-xl"
               >
                 <h2 className="mb-3 text-5xl font-bold text-[#f54d05]">
                   {number}
@@ -420,10 +420,10 @@ export default function FujakTransWebsite() {
         </section>
 
         {/* SERVICES */}
-        <section id="services" className="bg-[#E0E0E0] py-32">
+        <section id="services" className="bg-[#FFFFFF] py-32">
           <div className="mx-auto max-w-7xl px-6">
             <div className="mb-16 text-center">
-              <p className="mb-4 text-sm uppercase tracking-[0.3em] text-[#E0E0E0]">
+              <p className="mb-4 text-sm uppercase tracking-[0.3em] text-[#FFFFFF]">
                 Szolgáltatások
               </p>
 
@@ -458,7 +458,7 @@ export default function FujakTransWebsite() {
   {service.description}
 </p>
 
-                  <div className="flex items-center gap-2 font-semibold text-[#E0E0E0]">
+                  <div className="flex items-center gap-2 font-semibold text-[#FFFFFF]">
                     Részletek
                     <span>→</span>
                   </div>
@@ -469,10 +469,10 @@ export default function FujakTransWebsite() {
         </section>
 
         {/* REVIEWS */}
-        <section id="reviews" className="bg-[#E0E0E0] py-32">
+        <section id="reviews" className="bg-[#FFFFFF] py-32">
           <div className="mx-auto max-w-7xl px-6">
             <div className="mb-20 text-center">
-              <p className="mb-4 text-sm uppercase tracking-[0.3em] text-[#E0E0E0]">
+              <p className="mb-4 text-sm uppercase tracking-[0.3em] text-[#FFFFFF]">
                 Google értékelések
               </p>
 
@@ -485,7 +485,7 @@ export default function FujakTransWebsite() {
               {reviews.map((review) => (
                 <article
                   key={review.name}
-                  className="rounded-3xl border border-black/5 bg-gray-300/40 p-8 backdrop-blur-xl"
+                  className="rounded-3xl border border-black/5 bg-[#FFFFFF]/40 p-8 backdrop-blur-xl"
                 >
                   <div className="mb-6 flex items-center gap-1 text-[#f54d05]">
                     {[...Array(5)].map((_, index) => (
@@ -516,13 +516,13 @@ export default function FujakTransWebsite() {
         {/* GALLERY */}
         <section
           id="gallery"
-          className="relative overflow-hidden bg-[#E0E0E0] py-32"
+          className="relative overflow-hidden bg-[#FFFFFF] py-32"
         >
           <div className="absolute left-0 top-0 h-[500px] w-[500px] rounded-full bg-[#f54d05]/5 blur-[150px]" />
 
           <div className="relative z-10 mx-auto max-w-7xl px-6">
             <div className="mb-16 text-center">
-              <p className="mb-4 text-sm uppercase tracking-[0.3em] text-[#E0E0E0]">
+              <p className="mb-4 text-sm uppercase tracking-[0.3em] text-[#FFFFFF]">
                 Referenciák
               </p>
 
@@ -554,9 +554,9 @@ export default function FujakTransWebsite() {
         </section>
 
         {/* CTA */}
-        <section className="bg-[#E0E0E0] py-32">
+        <section className="bg-[#FFFFFF] py-32">
           <div className="mx-auto max-w-5xl px-6 text-center">
-            <div className="rounded-[40px] border border-black/10 bg-gradient-to-br from-[#f54d05] to-[#E0E0E0] p-14 text-black shadow-2xl">
+            <div className="rounded-[40px] border border-black/10 bg-gradient-to-br from-[#f54d05] to-[#FFFFFF] p-14 text-black shadow-2xl">
               <p className="mb-4 text-sm uppercase tracking-[0.3em]">
                 Gyors kapcsolatfelvétel
               </p>
@@ -573,14 +573,14 @@ export default function FujakTransWebsite() {
               <div className="flex flex-col justify-center gap-4 sm:flex-row">
                 <a
                   href="#contact"
-                  className="rounded-full bg-gray-300 px-8 py-4 font-bold text-black transition duration-300 hover:scale-105"
+                  className="rounded-full bg-[#FFFFFF] px-8 py-4 font-bold text-black transition duration-300 hover:scale-105"
                 >
                   Árajánlat kérése
                 </a>
 
                 <a
                   href="tel:+36206180015"
-                  className="rounded-full border border-black/20 px-8 py-4 font-bold transition duration-300 hover:bg-gray-300 hover:text-black"
+                  className="rounded-full border border-black/20 px-8 py-4 font-bold transition duration-300 hover:bg-[#FFFFFF] hover:text-black"
                 >
                   Hívás most
                 </a>
@@ -590,10 +590,10 @@ export default function FujakTransWebsite() {
         </section>
 
         {/* CONTACT */}
-        <section id="contact" className="bg-[#E0E0E0] py-32">
+        <section id="contact" className="bg-[#FFFFFF] py-32">
           <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 px-6 lg:grid-cols-2">
             <div>
-              <p className="mb-4 text-sm uppercase tracking-[0.3em] text-[#E0E0E0]">
+              <p className="mb-4 text-sm uppercase tracking-[0.3em] text-[#FFFFFF]">
                 Kapcsolat
               </p>
 
@@ -614,20 +614,20 @@ export default function FujakTransWebsite() {
                   type="text"
                   placeholder="Név"
                   autoComplete="name"
-                  className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4 outline-none placeholder:text-gray-700"
+                  className="w-full rounded-2xl border border-black/10 bg-[#FFFFFF]/40 px-5 py-4 outline-none placeholder:text-gray-700"
                 />
 
                 <input
                   type="email"
                   placeholder="Email"
                   autoComplete="email"
-                  className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4 outline-none placeholder:text-gray-700"
+                  className="w-full rounded-2xl border border-black/10 bg-[#FFFFFF]/40 px-5 py-4 outline-none placeholder:text-gray-700"
                 />
 
                 <textarea
                   placeholder="Üzenet"
                   rows={5}
-                  className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4 outline-none placeholder:text-gray-700"
+                  className="w-full rounded-2xl border border-black/10 bg-[#FFFFFF]/40 px-5 py-4 outline-none placeholder:text-gray-700"
                 />
 
                 <button
@@ -642,7 +642,7 @@ export default function FujakTransWebsite() {
         </section>
 
         {/* COOKIE */}
-        <section className="border-t border-black/5 bg-[#E0E0E0] px-6 py-8 text-sm text-gray-600">
+        <section className="border-t border-black/5 bg-[#FFFFFF] px-6 py-8 text-sm text-gray-600">
           <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-4 md:flex-row md:items-center">
             <p>
               Az oldal sütiket használ a jobb felhasználói élmény érdekében.
@@ -659,7 +659,7 @@ export default function FujakTransWebsite() {
             </div>
           </div>
         </section>
-      <div className="fixed bottom-0 left-0 z-[120] flex w-full gap-3 border-t border-black/10 bg-gray-300/80 p-4 backdrop-blur-2xl md:hidden">
+      <div className="fixed bottom-0 left-0 z-[120] flex w-full gap-3 border-t border-black/10 bg-[#FFFFFF]/80 p-4 backdrop-blur-2xl md:hidden">
   <a
     href="tel:+36206180015"
     className="flex-1 rounded-2xl bg-[#d8c7a3] px-4 py-4 text-center font-bold text-black"
@@ -669,14 +669,14 @@ export default function FujakTransWebsite() {
 
   <a
     href="#contact"
-    className="flex-1 rounded-2xl border border-black/10 bg-gray-300/5 px-4 py-4 text-center font-bold text-black"
+    className="flex-1 rounded-2xl border border-black/10 bg-[#FFFFFF]/5 px-4 py-4 text-center font-bold text-black"
   >
     Árajánlat
   </a>
 </div></main>
 
       {/* FOOTER */}
-      <footer className="border-t border-black/5 bg-gray-300 py-10">
+      <footer className="border-t border-black/5 bg-[#FFFFFF] py-10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-6 text-sm text-gray-700 md:flex-row">
           <p>© 2026 Fuják Trans.</p>
 

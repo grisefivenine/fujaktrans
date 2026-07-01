@@ -1,24 +1,5 @@
 "use client";
 
-import { useState } from "react";
-
-const vehicles = [
-  {
-    name: "Dobozos autó",
-    volume: 14,
-    desc: "Kisebb költözésekhez"
-  },
-  {
-    name: "Zárt dobozos autó",
-    volume: 19,
-    desc: "Közepes költözés"
-  },
-  {
-    name: "Ponyvás autó",
-    volume: 20,
-    desc: "Nagyobb költözésekhez"
-  }
-];
 
 function InstantCTA() {
   return (
@@ -44,7 +25,7 @@ function InstantCTA() {
         className="
         inline-block
         rounded-full
-        bg-gray-300
+        bg-[#FFFFFF]
         px-8
         py-4
         font-bold
@@ -61,7 +42,7 @@ function InstantCTA() {
 }
 export default function InfoPage() {
   return (
-    <div className="min-h-screen bg-[#E0E0E0] text-black">
+    <div className="min-h-screen bg-[#FFFFFF] text-black">
 
       {/* HERO HEADER */}
       <section className="py-28">
@@ -97,7 +78,7 @@ export default function InfoPage() {
           <div className="grid md:grid-cols-3 gap-8">
 
             {/* 1 */}
-            <div className="rounded-[30px] border border-black/5 bg-gray-300/40 backdrop-blur-xl p-8 shadow-xl">
+            <div className="rounded-[30px] border border-black/5 bg-[#FFFFFF]/40 backdrop-blur-xl p-8 shadow-xl">
               <h3 className="text-xl font-bold mb-4 text-[#f54d05]">
                 Dobozos autó (3,5 t)
               </h3>
@@ -113,7 +94,7 @@ export default function InfoPage() {
             </div>
 
             {/* 2 */}
-            <div className="rounded-[30px] border border-black/5 bg-gray-300/40 backdrop-blur-xl p-8 shadow-xl">
+            <div className="rounded-[30px] border border-black/5 bg-[#FFFFFF]/40 backdrop-blur-xl p-8 shadow-xl">
               <h3 className="text-xl font-bold mb-4 text-[#f54d05]">
                 Ponyvás autó (3,5 t)
               </h3>
@@ -129,7 +110,7 @@ export default function InfoPage() {
             </div>
 
             {/* 3 */}
-            <div className="rounded-[30px] border border-black/5 bg-gray-300/40 backdrop-blur-xl p-8 shadow-xl">
+            <div className="rounded-[30px] border border-black/5 bg-[#FFFFFF]/40 backdrop-blur-xl p-8 shadow-xl">
               <h3 className="text-xl font-bold mb-4 text-[#f54d05]">
                 Zárt dobozos autó (3,5 t)
               </h3>
@@ -153,7 +134,7 @@ export default function InfoPage() {
       <section className="pb-32">
         <div className="mx-auto max-w-5xl px-6">
 
-          <div className="rounded-[40px] border border-black/5 bg-gray-300/40 backdrop-blur-xl p-10 shadow-2xl">
+          <div className="rounded-[40px] border border-black/5 bg-[#FFFFFF]/40 backdrop-blur-xl p-10 shadow-2xl">
 
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               Flottánk és kapacitás
@@ -172,8 +153,105 @@ export default function InfoPage() {
         </div>
       </section>
 
-      <section className="py-24 bg-[#E0E0E0]">
+      
+
+      <section className="py-24 bg-[#FFFFFF]">
   <div className="mx-auto max-w-6xl px-6 space-y-10">
+
+{/* DETAILS SECTION */}
+<section className="pb-32">
+  <div className="mx-auto grid max-w-7xl gap-8 px-6 lg:grid-cols-2">
+
+    {/* LEFT */}
+    <div className="rounded-[40px] border border-black/5 bg-white/60 p-10 shadow-2xl backdrop-blur-xl">
+
+      <h2 className="mb-6 text-3xl font-bold md:text-4xl">
+        Mivel foglalkozunk?
+      </h2>
+
+      <p className="leading-8 text-black/75">
+        Vállalatunk főként új és használt bútorok, háztartási nagygépek
+        házhoz szállításával foglalkozik. Emellett bútorok szakszerű és gyors
+        összeszerelésében, komplett költöztetés lebonyolításában,
+        csomagküldési és áruszállítási szolgáltatásokban is segítséget
+        nyújtunk.
+      </p>
+
+      <p className="mt-6 leading-8 text-black/75">
+        Lomtalanítási feladatokat is ellátunk, igény szerint az ország bármely
+        területén készséggel rendelkezésre állunk.
+      </p>
+
+      <h3 className="mt-12 mb-5 text-2xl font-bold">
+        Időpontfoglalás - de hogyan?
+      </h3>
+
+      <p className="leading-8 text-black/75">
+        Aznapi kiszállítás nem minden esetben lehetséges, hiszen
+        diszpécsereink a lehető legoptimálisabban tervezik a napi fuvarokat.
+        Ennek ellenére előfordulhat, hogy rendelése még belefér az aznapi
+        szállítások közé.
+      </p>
+
+      <p className="mt-6 leading-8 text-black/75">
+        Tippünk: minimum{" "}
+        <span className="font-semibold text-[#f54d05]">2-3 nappal korábban</span>{" "}
+        egyeztessen velünk, hogy biztosan teljesíteni tudjuk igényeit.
+      </p>
+
+      <a
+        href="tel:+36206180015"
+        className="
+          mt-10 inline-flex items-center gap-3
+          rounded-full bg-[#f54d05]
+          px-7 py-4 font-bold text-white
+          shadow-[0_8px_28px_rgba(245,77,5,0.3)]
+          transition duration-300
+          hover:scale-105
+        "
+      >
+        📞 +36 20 618 0015
+      </a>
+    </div>
+
+    {/* RIGHT */}
+    <div className="rounded-[40px] border border-black/5 bg-white/60 p-10 shadow-2xl backdrop-blur-xl">
+
+      <h2 className="mb-8 text-3xl font-bold md:text-4xl">
+        Miért minket válasszon?
+      </h2>
+
+      <div className="space-y-5">
+
+        {[
+          "Kedvező áron, rejtett költségek nélkül dolgozunk.",
+          "Megbízható, minőségi szolgáltatást nyújtunk több éves tapasztalattal.",
+          "Gyorsan és hatékonyan szervezzük a napi fuvarokat.",
+          "Pontos kiszállításokat biztosítunk a megbeszélt időpontban.",
+          "Bútor-összeszerelésben is profi csapat segíti munkánkat.",
+          "Modern, rendszeresen karbantartott járműparkkal dolgozunk.",
+          "Minden fuvar biztosítva van partnereinken keresztül.",
+          "Diszpécsereink segítenek a legjobb megoldás kiválasztásában.",
+        ].map((item) => (
+          <div
+            key={item}
+            className="flex items-start gap-4 rounded-2xl border border-black/5 bg-white/70 p-4"
+          >
+            <div className="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#f54d05] text-sm font-bold text-white">
+              →
+            </div>
+
+            <p className="leading-7 text-black/75">
+              {item}
+            </p>
+          </div>
+        ))}
+
+      </div>
+    </div>
+
+  </div>
+</section>
 
     <InstantCTA />
 

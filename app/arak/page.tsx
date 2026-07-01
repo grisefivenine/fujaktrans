@@ -16,17 +16,17 @@ const Toggle = ({
     <button
       type="button"
       onClick={() => onChange(!checked)}
-      className="flex items-center justify-between w-full rounded-xl border border-black/10 bg-gray-300/30 px-4 py-3"
+      className="flex items-center justify-between w-full rounded-xl border border-black/10 bg-[#FFFFFF]/30 px-4 py-3"
     >
       <span className="text-black">{label}</span>
 
       <div
         className={`h-5 w-10 rounded-full transition ${
-          checked ? "bg-[#f54d05]" : "bg-gray-300/10"
+          checked ? "bg-[#f54d05]" : "bg-[#FFFFFF]/10"
         }`}
       >
         <div
-          className={`h-4 w-4 bg-gray-300 rounded-full mt-[2px] transition ${
+          className={`h-4 w-4 bg-[#FFFFFF] rounded-full mt-[2px] transition ${
             checked ? "ml-5" : "ml-1"
           }`}
         />
@@ -125,7 +125,7 @@ if (service !== "teherauto") {
 const total = base + floorExtra;
 
   return (
-    <main className="min-h-screen bg-gray-300 text-black px-6 py-32">
+    <main className="min-h-screen bg-[#FFFFFF] text-black px-6 py-32">
 
       <div className="mx-auto max-w-5xl text-center mb-16">
         <p className="text-sm tracking-[0.3em] text-[#f54d05] uppercase">
@@ -148,7 +148,7 @@ const total = base + floorExtra;
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="group relative rounded-3xl border border-black/5 bg-gray-300/40 backdrop-blur-xl p-8 transition duration-300 hover:-translate-y-2 hover:border-[#f54d05]/30 hover:shadow-2xl hover:shadow-[#f54d05]/10"
+      className="group relative rounded-3xl border border-black/5 bg-[#FFFFFF]/40 backdrop-blur-xl p-8 transition duration-300 hover:-translate-y-2 hover:border-[#f54d05]/30 hover:shadow-2xl hover:shadow-[#f54d05]/10"
     >
 
       {/* soft glow háttér (services feeling) */}
@@ -181,7 +181,7 @@ const total = base + floorExtra;
     <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-[400px] h-[400px] bg-[#f54d05]/10 blur-[120px] rounded-full" />
   </div>
 
-  <div className="relative rounded-3xl border border-black/10 bg-gray-300/40 backdrop-blur-xl p-10 shadow-xl">
+  <div className="relative rounded-3xl border border-black/10 bg-[#FFFFFF]/40 backdrop-blur-xl p-10 shadow-xl">
 
     {/* header */}
     <div className="mb-8">
@@ -201,7 +201,7 @@ const total = base + floorExtra;
     {/* content */}
     <div className="space-y-4 text-black/80">
 
-      <div className="rounded-2xl border border-black/10 bg-gray-300/30 p-5">
+      <div className="rounded-2xl border border-black/10 bg-[#FFFFFF]/30 p-5">
         <p className="font-semibold">
           📍 Útvonal
         </p>
@@ -210,7 +210,7 @@ const total = base + floorExtra;
         </p>
       </div>
 
-      <div className="rounded-2xl border border-black/10 bg-gray-300/30 p-5">
+      <div className="rounded-2xl border border-black/10 bg-[#FFFFFF]/30 p-5">
         <p className="font-semibold">
           🚚 Kiszállás
         </p>
@@ -219,7 +219,7 @@ const total = base + floorExtra;
         </p>
       </div>
 
-      <div className="rounded-2xl border border-black/10 bg-gray-300/30 p-5">
+      <div className="rounded-2xl border border-black/10 bg-[#FFFFFF]/30 p-5">
         <p className="font-semibold">
           ⏱ Munkaidő
         </p>
@@ -228,7 +228,7 @@ const total = base + floorExtra;
         </p>
       </div>
 
-      <div className="rounded-2xl border border-black/10 bg-gray-300/30 p-5">
+      <div className="rounded-2xl border border-black/10 bg-[#FFFFFF]/30 p-5">
         <p className="font-semibold">
           📦 Távolság
         </p>
@@ -260,7 +260,7 @@ const total = base + floorExtra;
 </div>
 
       {/* CALCULATOR */}
-<section className="py-28 bg-gray-300 mt-20 relative overflow-hidden">
+<section className="py-28 bg-[#FFFFFF] mt-20 relative overflow-hidden">
 
   {/* háttér glow (mint hero) */}
   <div className="absolute inset-0 pointer-events-none">
@@ -286,7 +286,7 @@ const total = base + floorExtra;
     </div>
 
     {/* MAIN CARD */}
-    <div className="relative rounded-3xl border border-black/10 bg-gray-300/40 backdrop-blur-xl p-8 md:p-10 shadow-2xl overflow-hidden">
+    <div className="relative rounded-3xl border border-black/10 bg-[#FFFFFF]/40 backdrop-blur-xl p-8 md:p-10 shadow-2xl overflow-hidden">
 
       {/* finom border glow */}
       <div className="absolute inset-0 rounded-3xl pointer-events-none border border-[#f54d05]/10" />
@@ -294,7 +294,7 @@ const total = base + floorExtra;
       <div className="space-y-6">
 
         {/* SERVICE */}
-        <div className="group rounded-2xl border border-black/10 bg-gray-300/30 p-5 transition hover:border-[#f54d05]/30 hover:-translate-y-0.5 duration-300">
+        <div className="group rounded-2xl border border-black/10 bg-[#FFFFFF]/30 p-5 transition hover:border-[#f54d05]/30 hover:-translate-y-0.5 duration-300">
           <p className="text-black/60 mb-3 text-sm tracking-wide">
             Szolgáltatás
           </p>
@@ -302,7 +302,7 @@ const total = base + floorExtra;
           <select
             value={service}
             onChange={(e) => setService(e.target.value)}
-            className="w-full p-4 rounded-xl bg-gray-300 border border-black/10 text-black outline-none focus:border-[#f54d05] transition"
+            className="w-full p-4 rounded-xl bg-[#FFFFFF] border border-black/10 text-black outline-none focus:border-[#f54d05] transition"
           >
             <option value="1fő">Költöztetés 1 fővel</option>
             <option value="2fő">Költöztetés 2 fővel</option>
@@ -313,7 +313,7 @@ const total = base + floorExtra;
         </div>
 
         {/* HOURS */}
-        <div className="group rounded-2xl border border-black/10 bg-gray-300/30 p-5 transition hover:border-[#f54d05]/30 hover:-translate-y-0.5 duration-300">
+        <div className="group rounded-2xl border border-black/10 bg-[#FFFFFF]/30 p-5 transition hover:border-[#f54d05]/30 hover:-translate-y-0.5 duration-300">
           <p className="text-black/60 mb-3 text-sm tracking-wide">
             Órák száma
           </p>
@@ -323,13 +323,13 @@ const total = base + floorExtra;
   min={1}
   value={hours}
   onChange={(e) => setHours(e.target.value)}
-            className="w-full p-4 rounded-xl bg-gray-300 border border-black/10 text-black outline-none focus:border-[#f54d05] transition"
+            className="w-full p-4 rounded-xl bg-[#FFFFFF] border border-black/10 text-black outline-none focus:border-[#f54d05] transition"
           />
         </div>
 
         {/* KM */}
         {service !== "teherauto" && (
-          <div className="group rounded-2xl border border-black/10 bg-gray-300/30 p-5 transition hover:border-[#f54d05]/30 hover:-translate-y-0.5 duration-300">
+          <div className="group rounded-2xl border border-black/10 bg-[#FFFFFF]/30 p-5 transition hover:border-[#f54d05]/30 hover:-translate-y-0.5 duration-300">
             <p className="text-black/60 mb-3 text-sm tracking-wide">
               Kilométer
             </p>
@@ -339,7 +339,7 @@ const total = base + floorExtra;
               min={0}
               value={km}
               onChange={(e) => setKm(e.target.value)}
-              className="w-full p-4 rounded-xl bg-gray-300 border border-black/10 text-black outline-none focus:border-[#f54d05] transition"
+              className="w-full p-4 rounded-xl bg-[#FFFFFF] border border-black/10 text-black outline-none focus:border-[#f54d05] transition"
             />
           </div>
         )}
@@ -349,7 +349,7 @@ const total = base + floorExtra;
           <div className="grid md:grid-cols-2 gap-6">
 
             {/* FROM */}
-            <div className="rounded-2xl border border-black/10 bg-gray-300/30 p-5 hover:border-[#f54d05]/30 transition">
+            <div className="rounded-2xl border border-black/10 bg-[#FFFFFF]/30 p-5 hover:border-[#f54d05]/30 transition">
               <p className="text-black/60 mb-3 text-sm">
                 Honnan emelet
               </p>
@@ -358,7 +358,7 @@ const total = base + floorExtra;
                 type="number"
                 value={fromFloor}
                 onChange={(e) => setFromFloor(e.target.value)}
-                className="w-full p-4 rounded-xl bg-gray-300 border border-black/10 text-black outline-none focus:border-[#f54d05] transition"
+                className="w-full p-4 rounded-xl bg-[#FFFFFF] border border-black/10 text-black outline-none focus:border-[#f54d05] transition"
               />
 
               <div className="mt-4">
@@ -371,7 +371,7 @@ const total = base + floorExtra;
             </div>
 
             {/* TO */}
-            <div className="rounded-2xl border border-black/10 bg-gray-300/30 p-5 hover:border-[#f54d05]/30 transition">
+            <div className="rounded-2xl border border-black/10 bg-[#FFFFFF]/30 p-5 hover:border-[#f54d05]/30 transition">
               <p className="text-black/60 mb-3 text-sm">
                 Hova emelet
               </p>
@@ -380,7 +380,7 @@ const total = base + floorExtra;
                 type="number"
                 value={toFloor}
                 onChange={(e) => setToFloor(e.target.value)}
-                className="w-full p-4 rounded-xl bg-gray-300 border border-black/10 text-black outline-none focus:border-[#f54d05] transition"
+                className="w-full p-4 rounded-xl bg-[#FFFFFF] border border-black/10 text-black outline-none focus:border-[#f54d05] transition"
               />
 
               <div className="mt-4">

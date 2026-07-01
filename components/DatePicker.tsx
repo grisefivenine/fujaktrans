@@ -16,7 +16,7 @@ export default function DatePicker({ date, setDate }: any) {
         className="
           w-full rounded-2xl
           border border-black/10
-          bg-gray-300/40
+          bg-[#FFFFFF]/40
           px-5 py-4
           text-left text-gray-800
           backdrop-blur-xl

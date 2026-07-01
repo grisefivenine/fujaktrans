@@ -10,7 +10,7 @@ import DatePicker from "../components/DatePicker";
 const stats = [
   ["500+", "Sikeres költözés"],
   ["4.9★", "Google értékelés"],
-  ["0-24", "Elérhetőség"],
+  ["10 éves", "Tapasztalat"],
   ["100%", "Biztonságos szállítás"],
 ];
 
@@ -292,13 +292,13 @@ const startDrag = (e: React.MouseEvent) => {
 
   if (isloading) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-gray-300">
+      <div className="flex min-h-screen items-center justify-center bg-[#FFFFFF]">
         <div className="space-y-6 text-center">
           <div className="mx-auto h-16 w-16 animate-spin rounded-full border-4 border-[#f54d05] border-t-transparent" />
 
           <div className="space-y-3">
-            <div className="h-4 w-48 animate-pulse rounded-full bg-gray-300/10 mx-auto" />
-            <div className="h-4 w-32 animate-pulse rounded-full bg-gray-300/5 mx-auto" />
+            <div className="h-4 w-48 animate-pulse rounded-full bg-[#FFFFFF]/10 mx-auto" />
+            <div className="h-4 w-32 animate-pulse rounded-full bg-[#FFFFFF]/5 mx-auto" />
           </div>
         </div>
       </div>
@@ -306,7 +306,7 @@ const startDrag = (e: React.MouseEvent) => {
   }
 
   return (
-  <div className="min-h-screen bg-gray-300 text-black overflow-x-hidden transition-all duration-700">
+  <div className="min-h-screen bg-[#FFFFFF] text-black overflow-x-hidden transition-all duration-700">
     <div
   className={`transition-all duration-1000 ${
     ready ? "opacity-100" : "opacity-0 scale-[1.02]"
@@ -385,7 +385,7 @@ const startDrag = (e: React.MouseEvent) => {
 
       <main id="top">
         {/* FLOATING MAP */}
-        <div className="fixed bottom-24 right-6 z-40 hidden overflow-hidden rounded-2xl border border-black/10 bg-gray-300/50 p-2 backdrop-blur-xl lg:block">
+        <div className="fixed bottom-24 right-6 z-40 hidden overflow-hidden rounded-2xl border border-black/10 bg-[#FFFFFF]/50 p-2 backdrop-blur-xl lg:block">
           <iframe
             title="Google Maps"
             src="https://www.google.com/maps?q=Nyíregyháza&output=embed"
@@ -399,7 +399,7 @@ const startDrag = (e: React.MouseEvent) => {
         <section className="relative flex min-h-screen items-center justify-center overflow-hidden pb-28 md:pb-36">
           
 
-          <div className="absolute inset-0 from-gray-300 to-gray-100/20 via-black/70 to-[#E0E0E0]" />
+          <div className="absolute inset-0 from-gray-300 to-gray-100/20 via-black/70 to-[#FFFFFF]" />
 
           <motion.div
   initial={{ opacity: 0, y: 40 }}
@@ -532,12 +532,12 @@ md:tracking-[0.35em]
         </section>
 
         {/* STATS */}
-<section className="bg-[#E0E0E0] py-16 md:py-28">
+<section className="bg-[#FFFFFF] py-16 md:py-28">
   <div className="mx-auto grid max-w-7xl grid-cols-2 gap-4 px-4 text-center md:grid-cols-4 md:gap-8 md:px-6">
     {stats.map(([number, label]) => (
       <div
         key={label}
-        className="rounded-2xl md:rounded-3xl border border-black/5 bg-gray-300/40 p-5 sm:p-6 md:p-10 backdrop-blur-xl"
+        className="rounded-2xl md:rounded-3xl border border-black/5 bg-[#FFFFFF]/40 p-5 sm:p-6 md:p-10 backdrop-blur-xl"
       >
         <h2 className="mb-2 md:mb-3 text-2xl sm:text-3xl md:text-5xl font-bold text-[#f54d05] leading-none">
           {number}
@@ -552,7 +552,7 @@ md:tracking-[0.35em]
 </section>
 
         {/* SERVICES */}
-        <section id="services" className="bg-[#E0E0E0] py-32">
+        <section id="services" className="bg-[#FFFFFF] py-32">
           <div className="mx-auto max-w-7xl px-6">
             <div className="mb-16 text-center">
               <p className="mb-4 text-sm uppercase tracking-[0.3em] text-[#000000]">
@@ -588,7 +588,7 @@ md:tracking-[0.35em]
                   className="
 group relative overflow-hidden rounded-[28px]
 border border-black/10
-bg-gray-300/40
+bg-[#FFFFFF]/40
 p-6 md:p-8
 backdrop-blur-xl
 
@@ -637,20 +637,20 @@ pointer-events-none
         {/* REVIEWS */}
         <section
   id="reviews"
-  className="relative overflow-hidden py-32 bg-[#E0E0E0]"
+  className="relative overflow-hidden py-32 bg-[#FFFFFF]"
 >
   {/* EDGE FADE LEFT */}
   <div className="
 pointer-events-none absolute left-0 top-0 z-10 h-full
 w-16 sm:w-24 md:w-40
-bg-gradient-to-r from-[#E0E0E0] to-transparent
+bg-gradient-to-r from-[#FFFFFF] to-transparent
 " />
 
   {/* EDGE FADE RIGHT */}
   <div className="
 pointer-events-none absolute right-0 top-0 z-10 h-full
 w-16 sm:w-24 md:w-40
-bg-gradient-to-l from-[#E0E0E0] to-transparent
+bg-gradient-to-l from-[#FFFFFF] to-transparent
 " />
 
   <div className="mx-auto max-w-7xl px-6 mb-16 text-center">
@@ -709,7 +709,7 @@ flex-shrink-0
 rounded-[28px]
 border
 border-black/10
-bg-gray-300/40
+bg-[#FFFFFF]/40
 p-8
 
 backdrop-blur-xl
@@ -772,13 +772,13 @@ hover:-translate-y-2
   </div>
 
   {/* optional bottom fade for depth */}
-  <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#E0E0E0] to-transparent" />
+  <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#FFFFFF] to-transparent" />
 </section>
 
         {/* GALLERY */}
 <section
   id="gallery"
-  className="relative overflow-hidden bg-[#E0E0E0] py-24"
+  className="relative overflow-hidden bg-[#FFFFFF] py-24"
 >
   <div className="absolute left-0 top-0 h-[500px] w-[500px] rounded-full bg-[#f54d05]/5 blur-[150px]" />
 
@@ -824,7 +824,7 @@ hover:-translate-y-2
       h-full
       w-24
       bg-gradient-to-r
-      from-[#E0E0E0]
+      from-[#FFFFFF]
       to-transparent
       hidden md:block
       " />
@@ -839,7 +839,7 @@ hover:-translate-y-2
       h-full
       w-24
       bg-gradient-to-l
-      from-[#E0E0E0]
+      from-[#FFFFFF]
       to-transparent
       hidden md:block
       " />
@@ -928,7 +928,7 @@ hover:-translate-y-2
 </section>
 
         {/* CTA */}
-        <section className="bg-[#E0E0E0] py-32">
+        <section className="bg-[#FFFFFF] py-32">
           <div className="mx-auto max-w-5xl px-6 text-center">
             <div className="rounded-[40px] border border-black/10 bg-gradient-to-br from-[#f54d05] to-[#4A0404] p-14 text-black shadow-2xl">
               <p className="mb-4 text-sm uppercase tracking-[0.3em]">
@@ -947,14 +947,14 @@ hover:-translate-y-2
               <div className="flex flex-col justify-center gap-4 sm:flex-row">
                 <a
                   href="#contact"
-                  className="rounded-full bg-gray-300 px-8 py-4 font-bold text-black transition duration-300 hover:scale-105"
+                  className="rounded-full bg-[#FFFFFF] px-8 py-4 font-bold text-black transition duration-300 hover:scale-105"
                 >
                   Árajánlat kérése
                 </a>
 
                 <a
                   href="tel:+36206180015"
-                  className="rounded-full border border-black/20 px-8 py-4 font-bold transition duration-300 hover:bg-gray-300 hover:text-black"
+                  className="rounded-full border border-black/20 px-8 py-4 font-bold transition duration-300 hover:bg-[#FFFFFF] hover:text-black"
                 >
                   Hívás most
                 </a>
@@ -964,7 +964,7 @@ hover:-translate-y-2
         </section>
 
         {/* CONTACT */}
-        <section id="contact" className="bg-[#E0E0E0] py-32">
+        <section id="contact" className="bg-[#FFFFFF] py-32">
           <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 px-6 lg:grid-cols-2">
             <div>
               <p className="mb-4 text-sm uppercase tracking-[0.3em] text-[#000000]">
@@ -1021,7 +1021,7 @@ hover:-translate-y-2
     <select
       value={service}
       onChange={(e) => setService(e.target.value)}
-      className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4 outline-none"
+      className="w-full rounded-2xl border border-black/10 bg-[#FFFFFF]/40 px-5 py-4 outline-none"
     >
       <option value="">Szolgáltatás kiválasztása</option>
       <option>Árufuvarozás</option>
@@ -1038,7 +1038,7 @@ hover:-translate-y-2
         placeholder="Név"
         value={name}
         onChange={(e) => setName(e.target.value)}
-        className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4 outline-none placeholder:text-gray-700"
+        className="w-full rounded-2xl border border-black/10 bg-[#FFFFFF]/40 px-5 py-4 outline-none placeholder:text-gray-700"
       />
 
       <input
@@ -1046,7 +1046,7 @@ hover:-translate-y-2
         placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4 outline-none placeholder:text-gray-700"
+        className="w-full rounded-2xl border border-black/10 bg-[#FFFFFF]/40 px-5 py-4 outline-none placeholder:text-gray-700"
       />
     </div>
 
@@ -1056,7 +1056,7 @@ hover:-translate-y-2
       placeholder="Telefonszám"
       value={phone}
       onChange={(e) => setPhone(e.target.value)}
-      className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4 outline-none placeholder:text-gray-700"
+      className="w-full rounded-2xl border border-black/10 bg-[#FFFFFF]/40 px-5 py-4 outline-none placeholder:text-gray-700"
     />
 
     {/* Honnan-hova */}
@@ -1066,7 +1066,7 @@ hover:-translate-y-2
         placeholder="Honnan költözne?"
         value={fromLocation}
         onChange={(e) => setFromLocation(e.target.value)}
-        className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4 outline-none placeholder:text-gray-700"
+        className="w-full rounded-2xl border border-black/10 bg-[#FFFFFF]/40 px-5 py-4 outline-none placeholder:text-gray-700"
       />
 
       <input
@@ -1074,7 +1074,7 @@ hover:-translate-y-2
         placeholder="Hova költözne?"
         value={toLocation}
         onChange={(e) => setToLocation(e.target.value)}
-        className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4 outline-none placeholder:text-gray-700"
+        className="w-full rounded-2xl border border-black/10 bg-[#FFFFFF]/40 px-5 py-4 outline-none placeholder:text-gray-700"
       />
     </div>
 
@@ -1083,7 +1083,7 @@ hover:-translate-y-2
       <select
         value={fromFloor}
         onChange={(e) => setFromFloor(e.target.value)}
-        className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4"
+        className="w-full rounded-2xl border border-black/10 bg-[#FFFFFF]/40 px-5 py-4"
       >
         <option>Kertes házból</option>
         <option>Földszintről</option>
@@ -1103,7 +1103,7 @@ hover:-translate-y-2
       <select
         value={toFloor}
         onChange={(e) => setToFloor(e.target.value)}
-        className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4"
+        className="w-full rounded-2xl border border-black/10 bg-[#FFFFFF]/40 px-5 py-4"
       >
         <option>Kertes házba</option>
         <option>Földszintre</option>
@@ -1126,7 +1126,7 @@ hover:-translate-y-2
       <select
         value={rooms}
         onChange={(e) => setRooms(e.target.value)}
-        className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4"
+        className="w-full rounded-2xl border border-black/10 bg-[#FFFFFF]/40 px-5 py-4"
       >
         <option>1 szoba</option>
         <option>2 szoba</option>
@@ -1137,7 +1137,7 @@ hover:-translate-y-2
       <select
         value={loaders}
         onChange={(e) => setLoaders(e.target.value)}
-        className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4"
+        className="w-full rounded-2xl border border-black/10 bg-[#FFFFFF]/40 px-5 py-4"
       >
         <option>1 rakodó</option>
         <option>2 rakodó</option>
@@ -1152,7 +1152,7 @@ hover:-translate-y-2
       onChange={(e) => setMessage(e.target.value)}
       placeholder="Szállítani kívánt tételek listája, részletek (lakás nagysága, bútorok mennyisége, antik tárgyak, 100 kg súly feletti tárgyak, stb.)"
       rows={4}
-      className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4 outline-none placeholder:text-gray-700"
+      className="w-full rounded-2xl border border-black/10 bg-[#FFFFFF]/40 px-5 py-4 outline-none placeholder:text-gray-700"
     />
 
     {/* MEGJEGYZÉS 2 (külön state kellene ide ha akarod) */}
@@ -1161,7 +1161,7 @@ hover:-translate-y-2
       onChange={(e) => setNote(e.target.value)}
       placeholder="Egyéb megjegyzés, információ, illetve kérdés a fuvarral kapcsolatban."
       rows={4}
-      className="w-full rounded-2xl border border-black/10 bg-gray-300/40 px-5 py-4 outline-none placeholder:text-gray-700"
+      className="w-full rounded-2xl border border-black/10 bg-[#FFFFFF]/40 px-5 py-4 outline-none placeholder:text-gray-700"
     />
 
     {/* DÁTUM VÁLASZTÓ */}
@@ -1177,7 +1177,7 @@ hover:-translate-y-2
     <button
       type="submit"
       disabled={loading}
-      className="w-full rounded-xl bg-gray-300 py-4 font-bold text-black transition hover:scale-[1.02] disabled:opacity-50"
+      className="w-full rounded-xl bg-[#FFFFFF] py-4 font-bold text-black transition hover:scale-[1.02] disabled:opacity-50"
     >
       {loading ? (
         <span className="flex items-center justify-center gap-2">

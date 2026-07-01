@@ -12,7 +12,7 @@ function InstantCTA() {
 
       <a
         href="#contact"
-        className="inline-block rounded-full bg-gray-300 px-8 py-4 font-bold text-black hover:scale-105 transition"
+        className="inline-block rounded-full bg-[#FFFFFF] px-8 py-4 font-bold text-black hover:scale-105 transition"
       >
         Ajánlatkérés indítása →
       </a>

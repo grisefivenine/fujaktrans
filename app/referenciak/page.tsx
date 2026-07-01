@@ -14,7 +14,7 @@ const [selected,setSelected]=useState<number|null>(null);
 
 return(
 
-<div className="min-h-screen bg-gray-300 text-black p-6">
+<div className="min-h-screen bg-[#FFFFFF] text-black p-6">
 
 <div className="mx-auto max-w-7xl">
 
@@ -95,7 +95,7 @@ className="
 fixed
 inset-0
 z-[999]
-bg-gray-300/95
+bg-[#FFFFFF]/95
 flex
 items-center
 justify-center
