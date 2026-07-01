@@ -312,77 +312,7 @@ const startDrag = (e: React.MouseEvent) => {
     ready ? "opacity-100" : "opacity-0 scale-[1.02]"
   }`}
 ></div>
-      {/* GLOBAL CINEMATIC BACKGROUND */}
-      <div className="pointer-events-none fixed inset-0 overflow-hidden">
-        {/* Main sepia ambient glow */}
-        <motion.div
-          animate={{
-            opacity: [0.2, 0.35, 0.2],
-            scale: [1, 1.08, 1],
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute left-1/2 top-[-250px] h-[900px] w-[900px] -translate-x-1/2 rounded-full bg-[#f54d05]/10 blur-[180px]"
-        />
-
-        {/* Light beam 1 */}
-        <motion.div
-          animate={{
-            opacity: [0.04, 0.1, 0.04],
-            rotate: [10, 14, 10],
-          }}
-          transition={{
-            duration: 14,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute left-1/2 top-[-350px] h-[1600px] w-[300px] -translate-x-1/2 rotate-[10deg] bg-gradient-to-b from-[#f54d05]/20 to-transparent blur-3xl"
-        />
-
-        {/* Light beam 2 */}
-        <motion.div
-          animate={{
-            opacity: [0.03, 0.08, 0.03],
-            rotate: [-12, -8, -12],
-          }}
-          transition={{
-            duration: 16,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute left-[30%] top-[-300px] h-[1500px] w-[220px] rotate-[-12deg] bg-gradient-to-b from-[#000000]/15 to-transparent blur-3xl"
-        />
-
-        {/* Particles */}
-        {[...Array(14)].map((_, i) => (
-          <motion.div
-            key={i}
-            animate={{
-              y: [0, -60, 0],
-              x: [0, 20, 0],
-              opacity: [0.1, 0.35, 0.1],
-            }}
-            transition={{
-              duration: 7 + i,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="absolute rounded-full bg-[#f54d05]"
-            style={{
-              width: `${4 + (i % 4) * 3}px`,
-              height: `${4 + (i % 4) * 3}px`,
-              left: `${(i * 7) % 100}%`,
-              top: `${20 + ((i * 9) % 60)}%`,
-              filter: "blur(2px)",
-            }}
-          />
-        ))}
-
-      </div>
-
+    
       <main id="top">
         {/* FLOATING MAP */}
         <div className="fixed bottom-24 right-6 z-40 hidden overflow-hidden rounded-2xl border border-black/10 bg-[#FFFFFF]/50 p-2 backdrop-blur-xl lg:block">
@@ -780,7 +710,7 @@ hover:-translate-y-2
   id="gallery"
   className="relative overflow-hidden bg-[#FFFFFF] py-24"
 >
-  <div className="absolute left-0 top-0 h-[500px] w-[500px] rounded-full bg-[#f54d05]/5 blur-[150px]" />
+  
 
   <div className="relative z-10 mx-auto max-w-7xl px-6">
 

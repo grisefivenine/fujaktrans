@@ -10,6 +10,7 @@ export default function Header() {
   const pathname = usePathname();
   const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
+  const [headerVisible, setHeaderVisible] = useState(true);
 
   useEffect(() => {
     const target = sessionStorage.getItem("scrollTarget");
@@ -65,8 +66,48 @@ export default function Header() {
     });
   };
 
+  useEffect(() => {
+  let lastScroll = window.scrollY;
+
+  const handleScroll = () => {
+    if (window.innerWidth < 768) return; // mobile: ne csináljon semmit
+
+    const currentScroll = window.scrollY;
+
+    // Top közelében mindig látszódjon
+    if (currentScroll < 40) {
+      setHeaderVisible(true);
+      lastScroll = currentScroll;
+      return;
+    }
+
+    if (currentScroll > lastScroll) {
+      // lefelé scroll
+      setHeaderVisible(false);
+    } else {
+      // felfelé scroll
+      setHeaderVisible(true);
+    }
+
+    lastScroll = currentScroll;
+  };
+
+  window.addEventListener("scroll", handleScroll, { passive: true });
+
+  return () => {
+    window.removeEventListener("scroll", handleScroll);
+  };
+}, []);
+
   return (
-    <header className="fixed inset-x-0 top-0 z-50 flex justify-center px-3 md:px-6 pt-3 md:pt-5">
+    <header
+  className={`
+    fixed inset-x-0 top-0 z-50
+    flex justify-center px-3 md:px-6 pt-3 md:pt-5
+    transition-transform duration-700 ease-out
+    ${headerVisible ? "translate-y-0" : "-translate-y-[140%]"}
+  `}
+>
   <div
     className={`
       w-full max-w-7xl
@@ -86,16 +127,30 @@ export default function Header() {
       <div className="flex items-center justify-between px-5 md:px-7 py-3">
 
         {/* LOGO */}
-        <Link href="/" className="flex items-center gap-3 group">
-          <Image
-            src="/images/logo.png"
-            alt="Fuják Trans"
-            width={200}
-            height={60}
-            className="h-8 md:h-10 w-auto object-contain transition group-hover:scale-[1.05]"
-            priority
-          />
-        </Link>
+        <button
+  onClick={() => {
+    setMenuOpen(false);
+
+    if (pathname === "/") {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    } else {
+      router.push("/");
+    }
+  }}
+  className="flex items-center gap-3 group"
+>
+  <Image
+    src="/images/logo.png"
+    alt="Fuják Trans"
+    width={200}
+    height={60}
+    className="h-8 md:h-10 w-auto object-contain transition group-hover:scale-[1.05]"
+    priority
+  />
+</button>
 
         {/* DESKTOP NAV */}
         <nav className="hidden md:flex items-center gap-2 text-sm text-gray-700">

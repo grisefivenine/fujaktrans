@@ -262,11 +262,7 @@ const total = base + floorExtra;
       {/* CALCULATOR */}
 <section className="py-28 bg-[#FFFFFF] mt-20 relative overflow-hidden">
 
-  {/* háttér glow (mint hero) */}
-  <div className="absolute inset-0 pointer-events-none">
-    <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#f54d05]/10 blur-[140px] rounded-full" />
-    <div className="absolute bottom-[-200px] right-[-100px] w-[500px] h-[500px] bg-[#f54d05]/10 blur-[140px] rounded-full" />
-  </div>
+  
 
   <div className="relative mx-auto max-w-5xl px-6">
 

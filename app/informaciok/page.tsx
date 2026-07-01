@@ -238,7 +238,7 @@ export default function InfoPage() {
             className="flex items-start gap-4 rounded-2xl border border-black/5 bg-white/70 p-4"
           >
             <div className="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#f54d05] text-sm font-bold text-white">
-              →
+              ✓
             </div>
 
             <p className="leading-7 text-black/75">
