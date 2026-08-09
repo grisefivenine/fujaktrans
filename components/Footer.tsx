@@ -74,6 +74,26 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* COLUMN 2.5 */}
+          <div>
+            <h3 className="text-white font-semibold mb-5">Gyakori helyszínek</h3>
+
+            <ul className="space-y-3 text-sm text-gray-400">
+              <li className="hover:text-white transition">Nyíregyháza</li>
+              <li className="hover:text-white transition">Debrecen</li>
+              <li className="hover:text-white transition">Kisvárda</li>
+              <li className="hover:text-white transition">Mátészalka</li>
+              <li className="hover:text-white transition">Hajdúnánás</li>
+              <li className="hover:text-white transition">Nyírtelek</li>
+              <li className="hover:text-white transition">Rakamaz</li>
+              <li className="hover:text-white transition">Tiszavasvári</li>
+              <li className="hover:text-white transition">Nyírtelek</li>
+              <li className="hover:text-white transition">Nyírpazony</li>
+
+            
+            </ul>
+          </div>
+
           {/* COLUMN 2 */}
           <div>
             <h3 className="text-white font-semibold mb-5">Kapcsolat</h3>

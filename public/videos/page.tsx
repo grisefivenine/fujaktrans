@@ -318,7 +318,7 @@ export default function FujakTransWebsite() {
             className="relative z-20 max-w-5xl px-6 pt-32 text-center"
           >
             <p className="mb-6 text-sm uppercase tracking-[0.45em] text-[#FFFFFF]">
-              Költöztetés/Fuvarozás/Lomtalanítás Magyarország egész területén
+              Költöztetés/Fuvarozás/Áruszállítás/Lomtalanítás Magyarország egész területén
             </p>
 
             <h1 className="mb-6 text-4xl font-bold leading-tight sm:text-5xl md:text-7xl text-[#FFFFFF]">
@@ -330,8 +330,7 @@ export default function FujakTransWebsite() {
             </h1>
 
             <p className="mx-auto mb-10 max-w-3xl text-base leading-relaxed text-black sm:text-lg md:text-xl">
-              Gyors, biztonságos és stresszmentes költöztetés/fuvarozás/lomtalanítás modern
-              megoldásokkal és tapasztalt csapattal.
+              Gyors, biztonságos és stresszmentes költöztetés, fuvarozás, áruszállítás és lomtalanítás modern megoldásokkal és tapasztalt csapattal.
             </p>
 
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">

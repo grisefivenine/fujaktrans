@@ -349,7 +349,7 @@ sm:text-base
 md:text-sm
 md:tracking-[0.35em]
 ">
-    Költöztetés / Fuvarozás / Lomtalanítás Magyarország egész területén
+    Költöztetés / Fuvarozás / Áruszálltás / Lomtalanítás Magyarország egész területén
   </p>
 
   <h1 className="mb-6 text-4xl font-bold leading-[1.1] sm:text-5xl md:text-7xl text-[#000000]">
@@ -410,8 +410,7 @@ sm:max-w-3xl
 sm:text-lg
 md:text-xl
 ">
-    Gyors, biztonságos és stresszmentes költöztetés, fuvarozás és
-    lomtalanítás modern megoldásokkal és tapasztalt csapattal.
+    Gyors, biztonságos és stresszmentes költöztetés, fuvarozás, áruszállítás és lomtalanítás modern megoldásokkal és tapasztalt csapattal.
   </p>
 
   <div className="mb-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -490,7 +489,7 @@ md:tracking-[0.35em]
               </p>
 
               <h2 className="mb-6 text-4xl font-bold md:text-6xl">
-                Teljes körű költöztetési megoldások
+                Teljes körű költöztetési, fuvarozási és szállítási szolgáltatások
               </h2>
 
               <p className="mx-auto max-w-3xl text-lg text-[#000000]">
