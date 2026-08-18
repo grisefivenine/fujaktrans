@@ -86,8 +86,8 @@ export default function Footer() {
               <li className="hover:text-white transition">Hajdúnánás</li>
               <li className="hover:text-white transition">Nyírtelek</li>
               <li className="hover:text-white transition">Rakamaz</li>
-              <li className="hover:text-white transition">Tiszavasvári</li>
-              <li className="hover:text-white transition">Nyírtelek</li>
+              <li className="hover:text-white transition">Tiszaújváros</li>
+              <li className="hover:text-white transition">Budapest</li>
               <li className="hover:text-white transition">Nyírpazony</li>
 
             
