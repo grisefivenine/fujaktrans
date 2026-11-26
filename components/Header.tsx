@@ -1,262 +1,132 @@
 "use client";
 
-import Link from "next/link";
-import { useState, useEffect } from "react";
-import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+
+const sectionLinks = [
+  { label: "Szolgáltatások", id: "services" },
+  { label: "Miért mi?", id: "why-us" },
+  { label: "Árak", href: "/arak" },
+  { label: "Információk", href: "/informaciok" },
+  { label: "Járműpark", id: "fleet" },
+  { label: "Vélemények", id: "reviews" },
+  { label: "Referenciák", href: "/referenciak" },
+  { label: "Blog", href: "/blog" },
+  { label: "Kapcsolat", id: "contact" },
+] as const;
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const pathname = usePathname();
-  const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
-  const [headerVisible, setHeaderVisible] = useState(true);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  const seamlessAtTop = isHome && !scrolled;
+  const desktopLinkClass = "ft-header-nav-link inline-flex items-center justify-center whitespace-nowrap rounded-full px-3 py-2 text-[#51484a] transition-colors duration-200 hover:bg-[#f54d05]/[0.08] hover:text-[#4A0404] 2xl:px-3.5";
+  const mobileLinkClass = "ft-header-nav-link-mobile flex min-h-12 items-center justify-between border-b border-black/[0.06] px-2 text-left text-[#291d20] transition hover:text-[#f54d05]";
 
   useEffect(() => {
-    const target = sessionStorage.getItem("scrollTarget");
-    if (!target) return;
-
-    setTimeout(() => {
-      const element = document.getElementById(target);
-      if (!element) return;
-
-      const offset =
-        element.getBoundingClientRect().top +
-        window.scrollY -
-        90;
-
-      window.scrollTo({
-        top: offset,
-        behavior: "smooth",
-      });
-
-      sessionStorage.removeItem("scrollTarget");
-    }, 400);
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
-  const onScroll = () => {
-    setScrolled(window.scrollY > 30);
-  };
-
-  window.addEventListener("scroll", onScroll);
-  return () => window.removeEventListener("scroll", onScroll);
-}, []);
-
-  const scrollToSection = (id: string) => {
-    setMenuOpen(false);
-
-    if (pathname !== "/") {
-      sessionStorage.setItem("scrollTarget", id);
-      router.push("/");
-      return;
-    }
-
-    const element = document.getElementById(id);
-    if (!element) return;
-
-    const offset =
-      element.getBoundingClientRect().top +
-      window.scrollY -
-      90;
-
-    window.scrollTo({
-      top: offset,
-      behavior: "smooth",
-    });
-  };
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
 
   useEffect(() => {
-  let lastScroll = window.scrollY;
+    if (!menuOpen) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMenuOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [menuOpen]);
 
-  const handleScroll = () => {
-    if (window.innerWidth < 768) return; // mobile: ne csináljon semmit
 
-    const currentScroll = window.scrollY;
+  const closeMenu = () => setMenuOpen(false);
 
-    // Top közelében mindig látszódjon
-    if (currentScroll < 40) {
-      setHeaderVisible(true);
-      lastScroll = currentScroll;
-      return;
-    }
-
-    if (currentScroll > lastScroll) {
-      // lefelé scroll
-      setHeaderVisible(false);
-    } else {
-      // felfelé scroll
-      setHeaderVisible(true);
-    }
-
-    lastScroll = currentScroll;
-  };
-
-  window.addEventListener("scroll", handleScroll, { passive: true });
-
-  return () => {
-    window.removeEventListener("scroll", handleScroll);
-  };
-}, []);
 
   return (
-    <header
-  className={`
-    fixed inset-x-0 top-0 z-50
-    flex justify-center px-3 md:px-6 pt-3 md:pt-5
-    transition-transform duration-700 ease-out
-    ${headerVisible ? "translate-y-0" : "-translate-y-[140%]"}
-  `}
->
-  <div
-    className={`
-      w-full max-w-7xl
-      rounded-2xl md:rounded-full
-      border border-white/60
-      backdrop-blur-2xl
-      bg-white/72
-      shadow-[0_8px_40px_rgba(0,0,0,0.08)]
-      transition-all duration-500
-      ${scrolled ? "max-w-6xl bg-white/82 shadow-[0_12px_50px_rgba(0,0,0,0.12)]" : ""}
-    `}
-  >
+    <>
+      <header className={`sticky top-0 z-[100] w-full border-b transition-[background-color,border-color,box-shadow,backdrop-filter] duration-300 ${seamlessAtTop ? "border-transparent bg-white shadow-none" : "border-black/10 bg-white/94 shadow-[0_8px_35px_rgba(27,10,12,0.08)] backdrop-blur-2xl"}`}>
+        <div className="mx-auto flex h-[76px] w-full max-w-[1320px] items-center justify-between gap-4 px-4 sm:px-6 lg:h-[84px] lg:px-8">
+          <Link href="/" aria-label="Fuják Trans főoldal" onClick={closeMenu} className="flex min-w-0 shrink-0 items-center">
+            <Image
+              src="/images/logo.png"
+              alt="Fuják Trans"
+              width={220}
+              height={70}
+              priority
+              sizes="(max-width: 640px) 148px, 190px"
+              className="h-9 w-auto max-w-[155px] object-contain sm:h-10 sm:max-w-[190px]"
+            />
+          </Link>
 
-      {/* TOP GLOW LINE */}
-      <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-[#f54d05]/40 to-transparent" />
-
-      <div className="flex items-center justify-between px-5 md:px-7 py-3">
-
-        {/* LOGO */}
-        <button
-  onClick={() => {
-    setMenuOpen(false);
-
-    if (pathname === "/") {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    } else {
-      router.push("/");
-    }
-  }}
-  className="flex items-center gap-3 group"
->
-  <Image
-    src="/images/logo.png"
-    alt="Fuják Trans"
-    width={200}
-    height={60}
-    className="h-8 md:h-10 w-auto object-contain transition group-hover:scale-[1.05]"
-    priority
-  />
-</button>
-
-        {/* DESKTOP NAV */}
-        <nav className="hidden md:flex items-center gap-2 text-sm text-gray-700">
-
-          {[
-            { label: "Szolgáltatások", id: "services" },
-            { label: "Áraink", href: "/arak" },
-            { label: "Információk", href: "/informaciok" },
-            { label: "Vélemények", id: "reviews" },
-            { label: "Referenciák", href: "/referenciak" },
-            { label: "Kapcsolat", id: "contact" },
-          ].map((item) =>
-            item.id ? (
-              <button
-                key={item.label}
-                onClick={() => scrollToSection(item.id!)}
-                className="group relative rounded-full px-4 py-2 transition duration-300 hover:bg-white/80 hover:shadow-sm hover:text-black"
-              >
-                {item.label}
-                <span className="absolute left-0 -bottom-1 h-[1px] w-0 bg-[#f54d05] transition-all duration-300 group-hover:w-full" />
-              </button>
-            ) : (
+          <nav aria-label="Fő navigáció" className="hidden items-center gap-0.5 xl:flex">
+            {sectionLinks.map((item) => (
               <Link
                 key={item.label}
-                href={item.href!}
-                className="group relative rounded-full px-4 py-2 transition duration-300 hover:bg-white/80 hover:shadow-sm hover:text-black"
+                href={"id" in item ? `/#${item.id}` : item.href}
+                onClick={closeMenu}
+                className={desktopLinkClass}
               >
                 {item.label}
-                <span className="absolute left-0 -bottom-1 h-[1px] w-0 bg-[#f54d05] transition-all duration-300 group-hover:w-full" />
               </Link>
-            )
-          )}
-
-        </nav>
-
-        {/* CTA + HAMBURGER */}
-        <div className="flex items-center gap-4">
-
-          {/* CTA BUTTON */}
-          <button
-            onClick={() => scrollToSection("contact")}
-            className="
-              hidden md:flex items-center gap-2 rounded-full
-bg-[#f54d05] px-5 py-2.5 text-sm font-semibold text-white
-shadow-[0_8px_24px_rgba(245,77,5,0.28)]
-transition-all duration-300
-hover:scale-[1.03]
-hover:shadow-[0_12px_32px_rgba(245,77,5,0.42)]
-active:scale-[0.98]
-            "
-          >
-            📞 Árajánlat
-          </button>
-
-          {/* MOBILE MENU BUTTON */}
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="relative flex h-10 w-10 flex-col items-center justify-center md:hidden"
-          >
-            <span className={`absolute h-0.5 w-6 bg-black transition-all duration-300 ${menuOpen ? "rotate-45" : "-translate-y-2"}`} />
-            <span className={`absolute h-0.5 w-6 bg-black transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`} />
-            <span className={`absolute h-0.5 w-6 bg-black transition-all duration-300 ${menuOpen ? "-rotate-45" : "translate-y-2"}`} />
-          </button>
-
-        </div>
-      </div>
-
-      {/* MOBILE MENU */}
-      {menuOpen && (
-        <div className="mx-3 mb-3 rounded-2xl border border-black/5 bg-white/92 backdrop-blur-2xl px-6 py-6 shadow-[0_15px_50px_rgba(0,0,0,0.12)] md:hidden">
-
-          <nav className="flex flex-col gap-5 text-gray-700 text-lg">
-
-            {[
-              { label: "Szolgáltatások", id: "services" },
-              { label: "Áraink", href: "/arak" },
-              { label: "Információk", href: "/informaciok" },
-              { label: "Vélemények", id: "reviews" },
-              { label: "Referenciák", href: "/referenciak" },
-              { label: "Kapcsolat", id: "contact" },
-            ].map((item) =>
-              item.id ? (
-                <button
-                  key={item.label}
-                  onClick={() => scrollToSection(item.id!)}
-                  className="text-left hover:text-black transition"
-                >
-                  {item.label}
-                </button>
-              ) : (
-                <Link
-                  key={item.label}
-                  href={item.href!}
-                  onClick={() => setMenuOpen(false)}
-                  className="hover:text-black transition"
-                >
-                  {item.label}
-                </Link>
-              )
-            )}
-
+            ))}
           </nav>
 
+          <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+            <Link href="/ajanlatkeres" onClick={closeMenu} className="hidden min-h-11 items-center justify-center rounded-full bg-[#f54d05] px-5 text-sm font-bold text-white shadow-[0_8px_24px_rgba(245,77,5,0.25)] transition hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(245,77,5,0.32)] sm:inline-flex">
+              Ingyenes ajánlat
+            </Link>
+            <button
+              type="button"
+              aria-label={menuOpen ? "Menü bezárása" : "Menü megnyitása"}
+              aria-expanded={menuOpen}
+              aria-controls="mobile-navigation"
+              onClick={() => setMenuOpen((open) => !open)}
+              className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full border transition xl:hidden border-black/10 bg-white/70 text-[#211719] hover:border-[#f54d05]/40 hover:bg-[#f54d05]/[0.06]`}
+            >
+              <span className="relative block h-4 w-5">
+                <span className={`absolute left-0 top-0 h-0.5 w-5 rounded-full bg-current transition-transform ${menuOpen ? "translate-y-[7px] rotate-45" : ""}`} />
+                <span className={`absolute left-0 top-[7px] h-0.5 w-5 rounded-full bg-current transition-opacity ${menuOpen ? "opacity-0" : "opacity-100"}`} />
+                <span className={`absolute left-0 top-[14px] h-0.5 w-5 rounded-full bg-current transition-transform ${menuOpen ? "-translate-y-[7px] -rotate-45" : ""}`} />
+              </span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {menuOpen && (
+        <div className="fixed inset-0 z-[90] xl:hidden" aria-modal="true" role="dialog" aria-label="Mobil navigáció">
+          <button type="button" aria-label="Menü bezárása" onClick={closeMenu} className="absolute inset-0 bg-[#160d10]/45 backdrop-blur-sm" />
+          <div id="mobile-navigation" className="absolute inset-x-3 top-[86px] max-h-[calc(100dvh-102px)] overflow-y-auto rounded-[28px] border border-white/80 bg-white/95 p-4 text-[#291d20] shadow-[0_24px_70px_rgba(20,8,10,0.22)] backdrop-blur-2xl sm:inset-x-5 sm:top-[96px] sm:p-6">
+            <nav className="flex flex-col" aria-label="Mobil fő navigáció">
+              {sectionLinks.map((item) => (
+                <Link
+                  key={item.label}
+                  href={"id" in item ? `/#${item.id}` : item.href}
+                  onClick={closeMenu}
+                  className={mobileLinkClass}
+                >
+                  {item.label}<span aria-hidden="true" className="text-[#f54d05]">↗</span>
+                </Link>
+              ))}
+            </nav>
+            <div className="mt-5 grid grid-cols-2 gap-3">
+              <a href="tel:+36206180015" onClick={closeMenu} className="flex min-h-12 items-center justify-center rounded-2xl border border-[#4A0404]/10 bg-[#4A0404]/[0.04] px-3 text-center text-sm font-bold text-[#4A0404]">Hívás: +36 20 618 0015</a>
+              <Link href="/ajanlatkeres" onClick={closeMenu} className="flex min-h-12 items-center justify-center rounded-2xl bg-[#f54d05] px-3 text-center text-sm font-bold text-white">Ajánlatkérés</Link>
+            </div>
+          </div>
         </div>
       )}
-    </div>
-    </header>
+    </>
   );
 }

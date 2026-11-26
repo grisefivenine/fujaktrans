@@ -1,274 +1,89 @@
-"use client";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { fleet } from "@/lib/site-content";
 
+export const metadata: Metadata = {
+  title: "Információk a költöztetésről és szállításról",
+  description: "Tudnivalók a Fuják Trans költöztetési, fuvarozási és szállítási szolgáltatásairól, a járműpark méreteiről és az időpont-egyeztetésről.",
+};
 
-function InstantCTA() {
-  return (
-    <div className="
-    rounded-[40px]
-    bg-gradient-to-br
-    from-[#f54d05]
-    to-[#4A0404]
-    p-12
-    shadow-2xl
-    ">
-
-      <h2 className="mb-5 text-4xl font-bold">
-        Tudja már melyik autóra van szüksége?
-      </h2>
-
-      <p className="mb-8 text-black/80">
-        Kérjen ajánlatot és rövid időn belül felvesszük Önnel a kapcsolatot.
-      </p>
-
-      <a
-        href="/#contact"
-        className="
-        inline-block
-        rounded-full
-        bg-[#FFFFFF]
-        px-8
-        py-4
-        font-bold
-        text-black
-        transition
-        hover:scale-105
-        "
-      >
-        Ajánlatkérés →
-      </a>
-
-    </div>
-  );
-}
 export default function InfoPage() {
   return (
-    <div className="min-h-screen bg-[#FFFFFF] text-black">
+    <main className="min-h-screen bg-[#fbf9f8] px-4 pb-20 pt-14 sm:px-6 sm:pt-20">
+      <div className="mx-auto max-w-[1180px]">
+        <header className="mx-auto mb-12 max-w-3xl text-center sm:mb-16">
+          <p className="mb-3 text-xs font-bold uppercase tracking-[0.22em] text-[#c94a19]">Fuják Trans · Információk</p>
+          <h1 className="text-balance text-3xl font-semibold leading-tight tracking-tight text-[#211719] sm:text-4xl lg:text-5xl">Minden, amit a szállításról tudni érdemes.</h1>
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-[#6b6063] sm:text-base">Átlátható egyeztetés, a feladathoz illő jármű és gondos munkavégzés — a költözés előkészítésétől a szállításig.</p>
+        </header>
 
-      {/* HERO HEADER */}
-      <section className="py-28">
-        <div className="mx-auto max-w-5xl px-6 text-center">
-
-          <p className="text-sm uppercase tracking-[0.35em] text-black/70">
-            Információk
-          </p>
-
-          <h1 className="mt-6 text-4xl md:text-6xl font-bold">
-            Minden amit a szállításról tudni érdemes
-          </h1>
-
-          <p className="mt-6 text-lg text-black/70">
-            Átlátható járműpark, pontos méretek és kapacitások.
-          </p>
-
-        </div>
-      </section>
-
-      {/* TRUCK SPECS */}
-      <section className="pb-32">
-        <div className="mx-auto max-w-6xl px-6 grid gap-8">
-
-          {/* TITLE */}
-          <div className="text-center mb-8">
-            <h2 className="text-3xl md:text-5xl font-bold">
-              Járműveink méretei
-            </h2>
-          </div>
-
-          {/* CARDS */}
-          <div className="grid md:grid-cols-3 gap-8">
-
-            {/* 1 */}
-            <div className="rounded-[30px] border border-black/5 bg-[#FFFFFF]/40 backdrop-blur-xl p-8 shadow-xl">
-              <h3 className="text-xl font-bold mb-4 text-[#f54d05]">
-                Dobozos autó (3,5 t)
-              </h3>
-
-              <p className="text-black/80 leading-7">
-                <span className="font-semibold">Platóméret:</span><br />
-                3,6 × 2,0 × 1,9 m
-              </p>
-
-              <p className="mt-4 text-black/80">
-                <span className="font-semibold">Légtér:</span> ≈ 14 m³
-              </p>
+        <section className="grid min-w-0 gap-5 lg:grid-cols-[1.05fr_.95fr] lg:gap-8">
+          <article className="ft-glass-card min-w-0 rounded-[28px] p-5 sm:p-8">
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#c94a19]">A szolgáltatásról</p>
+            <h2 className="mt-3 text-2xl font-bold leading-tight text-[#251a1d] sm:text-3xl">A kisebb szállítástól a teljes költöztetésig.</h2>
+            <div className="ft-prose mt-5">
+              <p>Munkánkat minden esetben pontosan, körültekintően és ügyfeleink igényeihez igazodva végezzük. Legyen szó egyetlen bútor vagy háztartási gép szállításáról, komplett költöztetésről vagy nagyobb mennyiségű áru fuvarozásáról, számíthat ránk.</p>
+              <p>Nyíregyházáról indulva az ország bármely pontjára, valamint előzetes egyeztetéssel nemzetközi viszonylatban is vállalunk szállításokat. Arra törekszünk, hogy minden megbízás a megbeszélt feltételek szerint, gördülékenyen történjen.</p>
+              <p>A szállítás mellett rakodást, csomagolást, fóliázást, illetve bútorok szét- és összeszerelését is kérheti. Komplett konyhabútor szerelésével kapcsolatban is érdemes felvenni velünk a kapcsolatot.</p>
             </div>
-
-            {/* 2 */}
-            <div className="rounded-[30px] border border-black/5 bg-[#FFFFFF]/40 backdrop-blur-xl p-8 shadow-xl">
-              <h3 className="text-xl font-bold mb-4 text-[#f54d05]">
-                Ponyvás autó (3,5 t)
-              </h3>
-
-              <p className="text-black/80 leading-7">
-                <span className="font-semibold">Platóméret:</span><br />
-                4,3 × 2,1 × 2,2 m
-              </p>
-
-              <p className="mt-4 text-black/80">
-                <span className="font-semibold">Légtér:</span> ≈ 20 m³
-              </p>
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+              <Link href="/ajanlatkeres" className="ft-button-primary">Személyre szabott ajánlat →</Link>
+              <Link href="/arak" className="ft-button-secondary">Árak és kalkulátor</Link>
             </div>
+          </article>
 
-            {/* 3 */}
-            <div className="rounded-[30px] border border-black/5 bg-[#FFFFFF]/40 backdrop-blur-xl p-8 shadow-xl">
-              <h3 className="text-xl font-bold mb-4 text-[#f54d05]">
-                Zárt dobozos autó (3,5 t)
-              </h3>
-
-              <p className="text-black/80 leading-7">
-                <span className="font-semibold">Platóméret:</span><br />
-                4,3 × 2,1 × 2,1 m
-              </p>
-
-              <p className="mt-4 text-black/80">
-                <span className="font-semibold">Légtér:</span> ≈ 19 m³
-              </p>
+          <article className="relative min-w-0 overflow-hidden rounded-[28px] bg-[#171112] p-5 text-white shadow-[0_24px_70px_rgba(35,12,17,.14)] sm:p-8">
+            <div aria-hidden="true" className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-[#f54d05]/25 blur-[90px]" />
+            <div className="relative">
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#ff8753]">Időpont-egyeztetés</p>
+              <h2 className="mt-3 text-2xl font-bold leading-tight sm:text-3xl">Érdemes előre tervezni.</h2>
+              <div className="mt-5 space-y-4 text-sm leading-7 text-white/72">
+                <p>Javasoljuk, hogy a költözés vagy szállítás időpontját lehetőség szerint legalább 2–3 nappal korábban egyeztesse velünk. Így könnyebben tudjuk összehangolni a szükséges járművet és a rakodócsapatot.</p>
+                <p>Ha sürgős a szállítás, telefonon vagy e-mailben akkor is keressen minket. Szabad kapacitás esetén aznapi szállítást és fuvarozást is vállalunk.</p>
+                <p>Igény esetén ingyenes helyszíni felmérést is biztosítunk. Ehhez előzetes telefonos egyeztetés szükséges, hogy megismerjük a költöztetés részleteit, és pontosabb ajánlatot készíthessünk.</p>
+              </div>
+              <a href="tel:+36206180015" className="ft-button-primary mt-7 w-full sm:w-auto">Hívás: +36 20 618 0015</a>
             </div>
+          </article>
+        </section>
 
+        <section className="mt-16 sm:mt-24" aria-labelledby="vehicles-title">
+          <header className="mx-auto mb-9 max-w-3xl text-center">
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.22em] text-[#c94a19]">Járműpark</p>
+            <h2 id="vehicles-title" className="text-balance text-3xl font-semibold leading-tight text-[#211719] sm:text-4xl">Járműveink méretei.</h2>
+            <p className="mt-3 text-sm leading-7 text-[#6b6063] sm:text-base">Flottánk jelenleg 3 gépjárműből áll, amelyet igény esetén további járművekkel is bővíteni tudunk.</p>
+          </header>
+
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+            {fleet.map((vehicle, index) => (
+              <article key={`${vehicle.type}-${index}`} className="ft-glass-card relative min-w-0 overflow-hidden rounded-[26px] p-5 sm:p-6">
+                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#f54d05] via-[#ff9a61] to-[#4A0404]" />
+                <div className="flex items-center justify-between gap-4">
+                  <div>
+                    <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#c94a19]">Jármű 0{index + 1}</p>
+                    <h3 className="mt-2 text-xl font-bold text-[#251a1d]">{vehicle.type}</h3>
+                  </div>
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#f54d05]/[0.09] text-[#c94a19]" aria-hidden="true">↗</span>
+                </div>
+                {vehicle.capacity && <p className="mt-5 text-2xl font-bold text-[#4A0404]">{vehicle.capacity}</p>}
+                <dl className="mt-4 space-y-3 rounded-[20px] bg-[#f5f0ee] p-4 text-sm">
+                  <div className="flex items-center justify-between gap-3"><dt className="text-[#7a6e71]">Hosszúság</dt><dd className="font-bold text-[#251a1d]">{vehicle.length}</dd></div>
+                  {vehicle.width && <div className="flex items-center justify-between gap-3"><dt className="text-[#7a6e71]">Szélesség</dt><dd className="font-bold text-[#251a1d]">{vehicle.width}</dd></div>}
+                  {vehicle.height && <div className="flex items-center justify-between gap-3"><dt className="text-[#7a6e71]">Magasság</dt><dd className="font-bold text-[#251a1d]">{vehicle.height}</dd></div>}
+                </dl>
+                <p className="mt-4 text-sm leading-6 text-[#6d6265]">{vehicle.description}</p>
+              </article>
+            ))}
           </div>
+          <p className="mx-auto mt-6 max-w-4xl text-center text-sm leading-7 text-[#6b6063]">Járműveink rendszeresen karbantartottak, megbízhatóak és a költöztetési, valamint áruszállítási feladatokhoz megfelelően felszereltek, biztosítva a rakomány biztonságos és hatékony szállítását.</p>
+        </section>
 
-        </div>
-      </section>
-
-      {/* INFO SECTION */}
-      <section className="pb-32">
-        <div className="mx-auto max-w-5xl px-6">
-
-          <div className="rounded-[40px] border border-black/5 bg-[#FFFFFF]/40 backdrop-blur-xl p-10 shadow-2xl">
-
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Flottánk és kapacitás
-            </h2>
-
-            <p className="text-lg leading-8 text-black/80">
-              Összesen <span className="font-bold text-[#f54d05]">3 gépjárművel</span> rendelkezünk,
-              de igény esetén további járművek is biztosíthatók.
-              <br /><br />
-              Minden autó modern, rendszeresen karbantartott és költöztetésre optimalizált,
-              így garantáljuk a biztonságos és gyors szállítást.
-            </p>
-
-          </div>
-
-        </div>
-      </section>
-
-      
-
-      <section className="py-24 bg-[#FFFFFF]">
-  <div className="mx-auto max-w-6xl px-6 space-y-10">
-
-{/* DETAILS SECTION */}
-<section className="pb-32">
-  <div className="mx-auto grid max-w-7xl gap-8 px-6 lg:grid-cols-2">
-
-    {/* LEFT */}
-    <div className="rounded-[40px] border border-black/5 bg-white/60 p-10 shadow-2xl backdrop-blur-xl">
-
-      <h2 className="mb-6 text-3xl font-bold md:text-4xl">
-        Mivel foglalkozunk?
-      </h2>
-
-      <p className="leading-8 text-black/75">
-        Cégünk megbízható és gyors szállítási szolgáltatásokat nyújt magánszemélyek és vállalkozások számára országszerte.
-      </p>
-
-      <p className="mt-6 leading-8 text-black/75">
-        Vállaljuk új és használt bútorok, háztartási nagygépek, csomagok és áruk szállítását, valamint bútorok szakszerű összeszerelését, teljes körű költöztetést lakások, családi házak és irodák számára, továbbá lomtalanítást és feleslegessé vált tárgyak elszállítását is.
-      </p>
-
-      <p className="mt-6 leading-8 text-black/75">
-      Munkánkat minden esetben pontosan, körültekintően és ügyfeleink igényeihez igazodva végezzük. Legyen szó egyetlen bútor vagy háztartási gép szállításáról, komplett költöztetésről vagy nagyobb mennyiségű áru fuvarozásáról, számíthat ránk.
-      </p>
-
-      <p className="mt-6 leading-8 text-black/75">
-      Az ország bármely pontján rendelkezésre állunk, és arra törekszünk, hogy minden megbízást gyorsan, biztonságosan és korrekt áron teljesítsünk.
-      </p>
-
-      <p className="mt-6 leading-8 font-bold text-black/75">
-      Válasszon minket, ha fontos Önnek a megbízhatóság, a pontosság és a gondos munkavégzés!
-      </p>
-
-      <h3 className="mt-12 mb-5 text-2xl font-bold">
-        Időpontfoglalás - Hogyan működik?
-      </h3>
-
-      <p className="mt-6 leading-8 text-black/75">
-        <span className="font-semibold text-[#f54d05]">Javasoljuk, hogy legalább 2-3 nappal korábban foglaljon időpontot</span>
-      , így biztosabban tudjuk teljesíteni kérését.
-      </p>
-
-      <p className="leading-8 text-black/75">
-        Ha sürgős a szállítás, vegye fel velünk a kapcsolatot telefonon vagy e-mailben – szabad kapacitás esetén aznapi kiszállítást és aznapi árufuvarozást is vállalunk.
-      </p>
-
-      <h3 className="mt-12 mb-5 text-2xl font-bold">
-        Ingyenes helyszíni felmérés
-      </h3>
-
-      <p className="mt-6 leading-8 text-black/75">
-      Igény esetén ingyenes helyszíni felmérést is biztosítunk. Ehhez előzetes telefonos egyeztetés szükséges, hogy felmérhessük a költöztetés részleteit, és pontos, átlátható árajánlatot készíthessünk.
-      </p>
-
-      <a
-        href="tel:+36206180015"
-        className="
-          mt-10 inline-flex items-center gap-3
-          rounded-full bg-[#f54d05]
-          px-7 py-4 font-bold text-white
-          shadow-[0_8px_28px_rgba(245,77,5,0.3)]
-          transition duration-300
-          hover:scale-105
-        "
-      >
-        📞 +36 20 618 0015
-      </a>
-    </div>
-
-    {/* RIGHT */}
-    <div className="rounded-[40px] border border-black/5 bg-white/60 p-10 shadow-2xl backdrop-blur-xl">
-
-      <h2 className="mb-8 text-3xl font-bold md:text-4xl">
-        Miért minket válasszon?
-      </h2>
-
-      <div className="space-y-5">
-
-        {[
-          "Kedvező áron, rejtett költségek nélkül dolgozunk.",
-          "Megbízható, minőségi szolgáltatást nyújtunk több éves tapasztalattal.",
-          "Gyorsan és hatékonyan szervezzük a napi fuvarokat.",
-          "Pontos kiszállításokat biztosítunk a megbeszélt időpontban.",
-          "Bútor-összeszerelésben is profi csapat segíti munkánkat.",
-          "Modern, rendszeresen karbantartott járműparkkal dolgozunk.",
-          "Minden fuvar biztosítva van partnereinken keresztül.",
-          "Diszpécsereink segítenek a legjobb megoldás kiválasztásában.",
-        ].map((item) => (
-          <div
-            key={item}
-            className="flex items-start gap-4 rounded-2xl border border-black/5 bg-white/70 p-4"
-          >
-            <div className="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#f54d05] text-sm font-bold text-white">
-              ✓
-            </div>
-
-            <p className="leading-7 text-black/75">
-              {item}
-            </p>
-          </div>
-        ))}
-
+        <section className="ft-cta-panel mt-16 rounded-[28px] p-6 text-center text-white sm:mt-24 sm:p-10">
+          <h2 className="text-balance text-2xl font-bold sm:text-3xl">Segítünk kiválasztani a megfelelő megoldást.</h2>
+          <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-white/75">Írja meg a feladat részleteit, és egyeztessünk a járműről, a szükséges rakodásról és az időpontról.</p>
+          <Link href="/ajanlatkeres" className="ft-button-light mt-6">Ajánlatot kérek →</Link>
+        </section>
       </div>
-    </div>
-
-  </div>
-</section>
-
-    <InstantCTA />
-
-  </div>
-</section>
-
-    </div>
+    </main>
   );
 }

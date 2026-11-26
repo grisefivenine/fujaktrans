@@ -125,14 +125,14 @@ if (service !== "teherauto") {
 const total = base + floorExtra;
 
   return (
-    <main className="min-h-screen bg-[#FFFFFF] text-black px-6 py-32">
+    <main className="min-h-screen bg-[#fbf9f8] px-4 py-12 text-[#211719] sm:px-6 sm:py-20">
 
-      <div className="mx-auto max-w-5xl text-center mb-16">
+      <div className="mx-auto mb-10 max-w-5xl text-center sm:mb-16">
         <p className="text-sm tracking-[0.3em] text-[#f54d05] uppercase">
           Árlista
         </p>
 
-        <h1 className="text-4xl md:text-6xl font-bold mt-4">
+        <h1 className="mt-4 text-3xl font-bold sm:text-4xl md:text-6xl">
           Áraink
         </h1>
 
@@ -148,7 +148,7 @@ const total = base + floorExtra;
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="group relative rounded-3xl border border-black/5 bg-[#FFFFFF]/40 backdrop-blur-xl p-8 transition duration-300 hover:-translate-y-2 hover:border-[#f54d05]/30 hover:shadow-2xl hover:shadow-[#f54d05]/10"
+      className="group relative rounded-3xl border border-black/5 bg-[#FFFFFF]/40 p-5 backdrop-blur-xl transition duration-300 sm:p-8 hover:-translate-y-2 hover:border-[#f54d05]/30 hover:shadow-2xl hover:shadow-[#f54d05]/10"
     >
 
       {/* soft glow háttér (services feeling) */}
@@ -181,7 +181,7 @@ const total = base + floorExtra;
     <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-[400px] h-[400px] bg-[#f54d05]/10 blur-[120px] rounded-full" />
   </div>
 
-  <div className="relative rounded-3xl border border-black/10 bg-[#FFFFFF]/40 backdrop-blur-xl p-10 shadow-xl">
+  <div className="relative rounded-3xl border border-black/10 bg-[#FFFFFF]/40 p-5 shadow-xl backdrop-blur-xl sm:p-8">
 
     {/* header */}
     <div className="mb-8">
@@ -189,7 +189,7 @@ const total = base + floorExtra;
         Példa
       </p>
 
-      <h3 className="text-3xl md:text-4xl font-black mt-3 text-black">
+      <h3 className="mt-3 text-2xl font-black text-black sm:text-3xl md:text-4xl">
         Példa számítás
       </h3>
 
@@ -206,7 +206,7 @@ const total = base + floorExtra;
           📍 Útvonal
         </p>
         <p className="mt-1 text-black/70">
-          Nyíregyháza – Kisvárda, 2 szobás lakás, 3. emelet
+          100 km-es fuvar, 2 szobás lakás, 3. emelet mindkét címen, lift nélkül
         </p>
       </div>
 
@@ -215,7 +215,7 @@ const total = base + floorExtra;
           🚚 Kiszállás
         </p>
         <p className="mt-1 text-black/70">
-          10.000 Ft alapdíj
+          Az első 15 km díjmentes
         </p>
       </div>
 
@@ -233,14 +233,19 @@ const total = base + floorExtra;
           📦 Távolság
         </p>
         <p className="mt-1 text-black/70">
-          100 km × 280 Ft = <span className="font-bold text-black">28.000 Ft</span>
+          (100 − 15) km × 280 Ft = <span className="font-bold text-black">23.800 Ft</span>
         </p>
+      </div>
+
+      <div className="rounded-2xl border border-black/10 bg-[#FFFFFF]/30 p-5">
+        <p className="font-semibold">↕ Emeletfelár</p>
+        <p className="mt-1 text-black/70">Két cím × 2.000 Ft / óra × 3 óra = <span className="font-bold text-black">12.000 Ft</span></p>
       </div>
 
     </div>
 
     {/* total highlight */}
-    <div className="mt-8 rounded-3xl border border-[#f54d05]/20 bg-gradient-to-r from-gray-300 to-gray-200 p-8 relative overflow-hidden">
+    <div className="relative mt-8 overflow-hidden rounded-3xl border border-[#f54d05]/20 bg-gradient-to-r from-gray-300 to-gray-200 p-5 sm:p-8">
 
       <div className="absolute inset-0 bg-[#f54d05]/10 blur-3xl" />
 
@@ -250,17 +255,18 @@ const total = base + floorExtra;
         </p>
 
         <p className="text-4xl md:text-5xl font-black text-[#f54d05]">
-          83.000 Ft
+          80.800 Ft
         </p>
       </div>
 
     </div>
+    <p className="relative mt-5 text-center text-xs leading-5 text-black/55">A példa a fenti díjszabás alapján készült, tájékoztató jellegű számítás. A pontos ajánlat a feladat részleteinek egyeztetése után adható meg.</p>
 
   </div>
 </div>
 
       {/* CALCULATOR */}
-<section className="py-28 bg-[#FFFFFF] mt-20 relative overflow-hidden">
+<section className="relative mt-16 overflow-hidden bg-[#FFFFFF] py-16 sm:mt-20 sm:py-28">
 
   
 
@@ -272,17 +278,17 @@ const total = base + floorExtra;
         Kalkulátor
       </p>
 
-      <h2 className="text-4xl md:text-5xl font-black mt-4">
+      <h2 className="mt-4 text-3xl font-black sm:text-4xl md:text-5xl">
         Ár kalkulátor
       </h2>
 
-      <p className="mt-5 text-black/60 max-w-2xl mx-auto">
-        Add meg a részleteket és azonnal látod a becsült költséget
+      <p className="mt-5 mx-auto max-w-2xl text-black/60">
+        Adja meg a feladat részleteit, és tekintse meg a kalkulátor szerinti becsült költséget.
       </p>
     </div>
 
     {/* MAIN CARD */}
-    <div className="relative rounded-3xl border border-black/10 bg-[#FFFFFF]/40 backdrop-blur-xl p-8 md:p-10 shadow-2xl overflow-hidden">
+    <div className="relative overflow-hidden rounded-3xl border border-black/10 bg-[#FFFFFF]/40 p-5 shadow-2xl backdrop-blur-xl sm:p-8 md:p-10">
 
       {/* finom border glow */}
       <div className="absolute inset-0 rounded-3xl pointer-events-none border border-[#f54d05]/10" />
@@ -317,6 +323,7 @@ const total = base + floorExtra;
           <input
   type="number"
   min={1}
+  max={24}
   value={hours}
   onChange={(e) => setHours(e.target.value)}
             className="w-full p-4 rounded-xl bg-[#FFFFFF] border border-black/10 text-black outline-none focus:border-[#f54d05] transition"
@@ -333,6 +340,7 @@ const total = base + floorExtra;
             <input
               type="number"
               min={0}
+              max={5000}
               value={km}
               onChange={(e) => setKm(e.target.value)}
               className="w-full p-4 rounded-xl bg-[#FFFFFF] border border-black/10 text-black outline-none focus:border-[#f54d05] transition"
@@ -352,6 +360,8 @@ const total = base + floorExtra;
 
               <input
                 type="number"
+                min={0}
+                max={50}
                 value={fromFloor}
                 onChange={(e) => setFromFloor(e.target.value)}
                 className="w-full p-4 rounded-xl bg-[#FFFFFF] border border-black/10 text-black outline-none focus:border-[#f54d05] transition"
@@ -374,6 +384,8 @@ const total = base + floorExtra;
 
               <input
                 type="number"
+                min={0}
+                max={50}
                 value={toFloor}
                 onChange={(e) => setToFloor(e.target.value)}
                 className="w-full p-4 rounded-xl bg-[#FFFFFF] border border-black/10 text-black outline-none focus:border-[#f54d05] transition"
@@ -398,7 +410,7 @@ const total = base + floorExtra;
             Becsült ár
           </p>
 
-          <div className="relative overflow-hidden rounded-3xl border border-[#f54d05]/20 bg-gradient-to-br from-gray-300 to-gray-200 p-10">
+          <div className="relative overflow-hidden rounded-3xl border border-[#f54d05]/20 bg-gradient-to-br from-gray-300 to-gray-200 p-5 sm:p-8">
 
             {/* glow layer */}
             <div className="absolute inset-0 bg-[#f54d05]/10 blur-3xl" />
@@ -406,7 +418,7 @@ const total = base + floorExtra;
             {/* animated feel */}
             <div className="relative text-center">
 
-              <p className="text-5xl md:text-6xl font-black text-[#f54d05] drop-shadow-sm">
+              <p className="text-4xl font-black text-[#f54d05] drop-shadow-sm sm:text-5xl md:text-6xl">
                 {total.toLocaleString()} Ft
               </p>
 
